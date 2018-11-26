@@ -1,9 +1,6 @@
-import json
+import basic_fun
+from accounts import employees, members
 
-my_d  = {
-    '1234567890' : ['C','Olivia Asemota', '1234567890', '123 Pine St', '1234', 5000]
-}
-
-save = open('accounts.txt', 'w')
-save.write(json.dumps(my_d))
-save.close()
+print(basic_fun.check_balance('0987654321'))
+print(basic_fun.withdrawl('0987654321', 200))
+print(basic_fun.deposit('0987654321', 300))
