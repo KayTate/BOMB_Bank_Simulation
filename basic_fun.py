@@ -1,5 +1,7 @@
 from accounts import members, employees
+import validators
 import random
+
 
 def open_acc():
 	#Randomly generates a 10-digit number to act as the account number
@@ -27,8 +29,9 @@ def open_acc():
 		holder = [name]
 	
 	#Asks for arbitrary phone number and address
-	members[acc_num]['Phone'] = input('What is your 10-digit phone number? ')
-	#Insert phone number validation function call
+	members[acc_num]['Phone'] = input('What is your 10-digit phone number? (Just numbers)')
+    # while not validators.is_phone(members[acc_num]['Phone']):
+    #     members[acc_num]['Phone'] = input('What is your 10-digit phone number? (Just numbers)')
 	members[acc_num]['Address'] = input('What is your address? ')
     
     #Creates PIN number
@@ -60,8 +63,11 @@ def deposit(acc_num, amount):
     print('You have successfully deposited $' + str(amount) + ' into your account.')
     return members[acc_num]['Balance']
 
-def transfer(origin, destin, amount):
-    members[destin]['Balance'] += amount
-    members[origin]['Balance'] -= amount
-    print('You have successfully transfered $' + str(amount) + ' into the account ending in ' + destin[7:] + '.')
+def transfer(origin, destin, amount, name):
+    if validators.is_holder(destin, name):
+        members[destin]['Balance'] += amount
+        members[origin]['Balance'] -= amount
+        print('You have successfully transfered $' + str(amount) + ' into the account ending in ' + destin[6:] + '.')
+        return members[origin]['Balance']
+    print('You are not an account holder on the account ending in ' + destin[6:] + ' and cannot transfer money into this account.')
     return members[origin]['Balance']
