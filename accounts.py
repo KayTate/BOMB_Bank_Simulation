@@ -5,7 +5,7 @@ members = {
 }
 
 employees = {
-  'Olivia' : {'Phone' : '3456789012', 'Address' : '234 Pine St', 'Wage' : 9.00, 'Hours' : 0},
+  'Olivia' : {'Phone' : '3456789012', 'Address' : '234 Pine St', 'Wage' : 100.05, 'Hours' : 4},
   
   'Kaycee' : {'Phone' : '2345678901', 'Address' : '345 Pine St', 'Wage' : 9.25, 'Hours' : 3}
 }
