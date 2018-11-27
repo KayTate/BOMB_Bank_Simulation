@@ -1,40 +1,146 @@
 from accounts import employees
+import validators
 
 def application():
-    
     #Applicaation Questionaire
-    name = input('Please enter your Name.')
-    phone = input('Please enter a valid 10-digit Phone Number.')
-    address = input('Please enter a valid Address.')
-    email = input('Please enter your email address.')
-    city = input('Please enter the city you reside in.')
-    state = input('Please enter the State you reside in.')
-    age = input('Are you older than 18 years of age? (Y/N)')
-    ssn = input('Please enter the last four digits of your social security number?')
+    input('Please enter your Name.')
+    input('Please enter a valid 10-digit Phone Number.')
+    input('Please enter a valid Address.')
+    input('Are you older than 18 years of age? (Y/N)')
+    input('Please enter the last four digits of your social security number?')
     
     military = input('Have you served in the Military? (Y/N)')
-    if military = 'Y':
-        service = input('Please enter the time you served.')
+    if military == 'Y':
+        input('Please enter the time you served.')
 
-    felony = input('Have you been convicted of a crime? (Y/N')
+    input('Have you been convicted of a crime? (Y/N')
 
-    drug = input('Are you willing to comply with a mandatory drug screening? (Y/N)')
+    input('Are you willing to comply with a mandatory drug screening? (Y/N)')
 
-    time = input(''' Are you appling part-time, full-time, or temporarily? 
+    input(''' Are you appling part-time, full-time, or temporarily? 
     Enter P for Part-Time 
     Enter T for Temporary
     Enter F for Full-Time
     ''')
+    
+    input('What position are you applying for? (Janitor, Teller, Manager)')
 
-
-
-
-    position = input('What position are you applying for? (Janitor, Teller, Manager)')
+def form(wage):
+    name = input('Please enter you name.')
+    employees[name] = {}
+    employees[name]['Phone'] = input('What is your 10-digit phone number? (Just numbers) ')
+    while not validators.is_phone(employees[name]['Phone']):
+        employees[name]['Phone'] = input('What is your 10-digit phone number? (Just numbers) ')
+    employees[name]['Address'] = input('What is your address?')
+    employees[name]['Wage'] = wage
+    employees[name]['Hours'] = 0
 
 def employee_story():
     print( '''
-    
-    Welcome, Here is an application. Please fill it out correctly. 
-
+    The teller hands you an application.
+    "Welcome," she says. "Here is an application. Please fill it out correctly."
+    You take the application to a chair in the corner and fill it out quickly.
     ''')
 
+    application()
+
+    print('''
+    You walk over to the teller when you are done and hand her the application.
+    Without so much as a glance down, she throws the stack of papers away.
+    "So, now that that's out of the way, what's your name?"
+    ''')
+
+    q1 = input('''
+    Feeling disrespected, you have four options.
+    1) Walk away without letting her speak. After all, you need a job, but not badly enough to deal with that disrespect.
+    2) Tell her that she should have looked at the application. Why should you have spent all that time without her using it?
+    3) Tell her your name with attitude. You are pretty desperate for the job, but you have a hard time managing your anger.
+    4) Politely tell her your name. Who are you kidding? You need this job pretty darn badly.
+    ''')
+
+    if q1 == '1':
+        print('You angrily walk out of the bank. You even make sure the door slams shut for emphasis. It\'s time to look for a job elsewhere.')
+
+    elif q1 == '2':
+        print('''
+        "Well maybe if you had looked at the application I spent 20 minuites filling out, you would know what my name was!" you say angrily. A couple of other customers and tellers look over but you don't really care.
+        The teller raises an eyebrow. You're quite sure she's about to tell you a few things about yourself so you quickly start to prepare clapbacks.
+        Instead of giving you the third degree, she says "I like your attitude. Go sit and wait for the hiring manager to come out.
+        ''')
+
+        q2 = input('''
+        Slightly confused now, you have two options.
+        1) Walk away. Do you really want to work with these crazy people? You're honestly surprised the bank even has members.
+        2) Wait for the hiring manager. You kind of want to hear what they have to say and you also know this is an opportunity to tell them how crappy this teller is.
+        ''')
+
+        if q2 == '1':
+            print('''
+            You walk away a little more angry than you were five minutes ago. You're honestly contemplating closing your account there but decide it's not that deep. You will definetly be making a Facebook post later though. #CanISpeakToYourManager???
+            ''')
+
+        else:
+            print('''
+            The manager walks out of the back room looking...rough. You're thinking that you probably should have left while you had the chance. This bank's reputation is sinking lower by the minute.
+            "Hey, we're extremely short handed here. We NEED new tellers. I understand that you are looking for a job?" the manager says.
+            ''')
+
+            q3 = input('''
+            This situation is getting weirder by the second. You have three options.
+            1) Play the "Can I speak to your manager card?" and complain about the teller's attitude.
+            2) Play on the fact that they need you more than you need the job. They don't have to know how much you are struggling...you might even manage to negotiate higher wages.
+            3) Lay all your chips on the table...notably the fact that you can't even afford a single chip to eat.
+            ''')
+
+            if q3 == '1':
+                print('''
+                "Well, of course you need new tellers! The ones you have now are absolute trash! I came here looking for a job and I will leave after by closing my account! So much attitude, so much disrespect! I hope this bank is closed by Christmas!" you scream, gathering your things and storming out of the door.
+                ''')
+            
+            elif q3 == '2':
+                print('''
+                You really need this job. Your rent is due. Your Netflix is off. You need food. Your Netflix is off. It's rough out here in these streets. BUT, and that's a big but, they don't have to know that.
+                You decide to use this to your advantage.
+                ''')
+
+                q4 = input('''
+                You have two options.
+                1) Lie about your qualification so that they want you even more.
+                2) Go directly into negotiating for a higher wage.
+                ''')
+
+                if q4 == '1':
+                    print('''
+                    Too bad they overheard you on the phone earlier telling your friend about your lack of experience. No one likes a lying skank...
+                    ''')
+
+                else:
+                    print('''
+                    "I have a couple of different offers on the table...Are you willing to pay more than $12 an hour?" you say with confidence that you don't have. Minimium wage is $7.40 and $12 is asking a lot...
+                    To your surprise, the manager nods, albiet reluctantly. He hands you an application (one much shorter than the first) for you to fill out.
+                    ''')
+                    form(12.00)
+            
+            elif q3 == '3':
+                print('''
+                "I'm going to be honest," you start, "I'm extremely broke right now. This is my last option and I don't have a lot of experience."
+                With a glance at the over flowing trashcans and dirty windows, the manager nods. "I can offer you $10 an hour as a janitor or $8 an hour as a teller but with more hours."
+                ''')
+
+                q4 = input('''
+                You have two options.
+                1) Accept the job as a janitor
+                2) Accept the job as a teller
+                ''')
+
+                if q4 == '1':
+                    print('''
+                    You start your job the same day but soon find out that you will only be able to work 5 hours a week. You guess some money is better than no money, but you are still looking for another job.
+                    ''')
+                else:
+                    print('''
+                    The manager hands you a short form to fill out and sends you on your way. You will be able to work 30 hours a week which is a lot more than you would have as a janitor. Apparently times are very rough in the banking industry and they have been cutting corners where they can.
+                    ''')
+                    form(8.00)
+
+    #elif q1 == '3':
