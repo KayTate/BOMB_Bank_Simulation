@@ -29,9 +29,9 @@ def open_acc():
 		holder = [name]
 	
 	#Asks for arbitrary phone number and address
-	members[acc_num]['Phone'] = input('What is your 10-digit phone number? (Just numbers)')
-    # while not validators.is_phone(members[acc_num]['Phone']):
-    #     members[acc_num]['Phone'] = input('What is your 10-digit phone number? (Just numbers)')
+	members[acc_num]['Phone'] = input('What is your 10-digit phone number? (Just numbers) ')
+	while not validators.is_phone(members[acc_num]['Phone']):
+		members[acc_num]['Phone'] = input('What is your 10-digit phone number? (Just numbers) ')
 	members[acc_num]['Address'] = input('What is your address? ')
     
     #Creates PIN number
@@ -47,7 +47,7 @@ def check_balance(acc_num):
 
 def withdrawl(acc_num, amount):
     current = check_balance(acc_num)
-    new = current - amount
+    new = current - int(amount)
 
     #If the account becomes negative, they will not be able to withdraw that amount
     if new < 0:
@@ -59,15 +59,40 @@ def withdrawl(acc_num, amount):
         return new
 
 def deposit(acc_num, amount):
-    members[acc_num]['Balance'] += amount
+    members[acc_num]['Balance'] += int(amount)
     print('You have successfully deposited $' + str(amount) + ' into your account.')
     return members[acc_num]['Balance']
 
-def transfer(origin, destin, amount, name):
-    if validators.is_holder(destin, name):
-        members[destin]['Balance'] += amount
-        members[origin]['Balance'] -= amount
-        print('You have successfully transfered $' + str(amount) + ' into the account ending in ' + destin[6:] + '.')
-        return members[origin]['Balance']
-    print('You are not an account holder on the account ending in ' + destin[6:] + ' and cannot transfer money into this account.')
-    return members[origin]['Balance']
+def transfer(origin, destin, amount):
+	members[destin]['Balance'] += int(amount)
+	members[origin]['Balance'] -= int(amount)
+	print('You have successfully transfered $' + str(amount) + ' into the account ending in ' + destin[6:] + '.')
+	return members[origin]['Balance']
+
+def transactions_occur(acc_num):
+	customer = True
+	while customer:
+		function = input('What would you like to do to day? Check your balance, deposit, withdraw, or transfer money? (C, D, W, T)')
+		
+		if function == 'D':
+			amount = input('How much would you like to deposit? ')
+			print('You have $' + str(deposit(acc_num, amount)) + ' left in your account now.')
+			transaction = input('Would you like to make another transaction? (y/n) ')
+		elif function == 'W':
+			amount = input('How much would you like to withdraw? ')
+			print('You have $' + str(withdrawl(acc_num, amount)) + ' left in your account now.')
+			transaction = input('Would you like to make another transaction? (y/n) ')
+		elif function == 'T':
+			destin = input('Where would you like to deposit money? Please tell me the account number. ')
+			amount = input('How much money would you like to deposit? ')
+			print('You have $' + str(transfer(acc_num, destin, amount)) + ' left in your account now.')
+			transaction = input('Would you like to make another transaction? (y/n) ')
+		elif function == 'C':
+			print('You have $' + str(check_balance(acc_num)) + ' in your account.')
+			transaction = input('Would you like to make another transaction? (y/n) ')
+
+		#Decides whether or not another transaction is to be made
+		if transaction == 'y':
+			customer = True
+		else:
+			customer = False

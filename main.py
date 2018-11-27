@@ -1,26 +1,49 @@
 import basic_fun
 from accounts import employees, members
 
-bank_open = True
+bank_open = True 
 while bank_open:
-    ident = input('Hello! How would you like to access your account? By account number?')
-    if ident == 'account number':
-        acc_num = input('What is the account number?')
-        pin = input('What is the PIN number for this account?')
-        name = input('What is your name?')
-        if pin != members[acc_num]['PIN']:
-            print('This is not the correct PIN for this account')
-        elif name not in members[acc_num]['Holder']:
-            print('You are not an account holder for this account.')
-        else:
-            function = input('What would you like to do today? Deposit, withdraw, or transfer money? Or would you just like to check your balance? (D, W, T, C)')
-            if function == 'D':
-                amount = input('How much would you like to deposit?')
-                print('You have $' + str(basic_fun.deposit(acc_num, amount) + ' left in your account now.')
-            elif function == 'W':
-                amount = input('How much would you like to withdraw?')
-                print('You have $' + str(basic_fun.withdrawl(acc_num, amount)) + ' left in your account now.')
-            elif function == 'T':
-                destin = input('Where would you like to deposit money? Please tell me the account number.')
-                amount = input('How much money would you like to deposit?')
-                print('You have $' + str(basic_fun.transfer(acc_num, destin, amount, name)) + 'left in your account now.')
+    have_acct = input('Hello! Do you have an account with us? (y/n) ')
+
+    #Opens account
+    if have_acct == 'n':
+        #Current options: yes, no
+        #Future options: build-your-own-adventure key words
+        ident = input('Would you like to open an account with us today? (y/n) ')
+        if ident == 'y':
+            basic_fun.open_acc()
+            new_trans = input('Would you like to complete more transactions? (y/n) ')
+            if new_trans == 'y': 
+                acc_num = input('For security purposes, please give me the account number for the account you just created. ')
+                basic_fun.transactions_occur(acc_num)
+
+    #Requests identification to locate account
+    elif have_acct == 'y':
+        #Current options: account number
+        #Future options: name, build-your-own-adventure key words
+        ident = input('How would you like to access your account? By account number? ')
+        
+        #Enters account based on account number
+        if ident == 'account number':
+            acc_num = input('What is the account number? ')
+            pin = input('What is the PIN number for this account? ')
+            name = input('What is your name? ')
+
+            #Decides whether or not the user has access to the account
+            if pin != members[acc_num]['PIN']:
+                print('This is not the correct PIN for this account')
+                customer = False
+            elif name not in members[acc_num]['Holder']:
+                print('You are not an account holder for this account.')
+                customer = False
+            
+            #Transactions occur until the user is done
+            else:
+                basic_fun.transactions_occur(acc_num)
+
+    #Determines if another customer is ready to be served; hopefully will be replaced with timery
+    bank_open = input('Is the bank still open? (y/n) ')
+    if bank_open == 'y':
+        bank_open = True
+    else:
+        bank_open = False
