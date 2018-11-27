@@ -64,6 +64,9 @@ def deposit(acc_num, amount):
     return members[acc_num]['Balance']
 
 def transfer(origin, destin, amount):
+	if validators.is_same(origin, destin):
+		print('You cannot transfer money to the original account')
+		return members[origin]['Balance']
 	members[destin]['Balance'] += int(amount)
 	members[origin]['Balance'] -= int(amount)
 	print('You have successfully transfered $' + str(amount) + ' into the account ending in ' + destin[6:] + '.')

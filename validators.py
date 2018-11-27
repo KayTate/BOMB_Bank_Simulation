@@ -1,9 +1,8 @@
 from accounts import employees, members
 
-def is_holder(acc_num, name):
-    for holder in members[acc_num]['Holder']:
-        if name == holder:
-            return True
+def is_same(origin, destin):
+    if origin == destin:
+        return True
     return False
 
 def is_phone(number):
