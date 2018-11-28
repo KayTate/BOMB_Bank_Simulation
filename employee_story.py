@@ -1,11 +1,16 @@
 from accounts import employees
 import validators
 
+name = ''
+number = ''
+address = ''
+
 def application():
+    global number, name, address
     #Applicaation Questionaire
-    input('Please enter your Name.')
-    input('Please enter a valid 10-digit Phone Number.')
-    input('Please enter a valid Address.')
+    name = input('Please enter your Name.')
+    number = input('Please enter a valid 10-digit Phone Number.')
+    address = input('Please enter a valid Address.')
     input('Are you older than 18 years of age? (Y/N)')
     input('Please enter the last four digits of your social security number?')
     
@@ -25,13 +30,11 @@ def application():
     
     input('What position are you applying for? (Janitor, Teller, Manager)')
 
-def form(wage):
-    name = input('Please enter you name.')
+def hire(wage):
+    global name, number, address
     employees[name] = {}
-    employees[name]['Phone'] = input('What is your 10-digit phone number? (Just numbers) ')
-    while not validators.is_phone(employees[name]['Phone']):
-        employees[name]['Phone'] = input('What is your 10-digit phone number? (Just numbers) ')
-    employees[name]['Address'] = input('What is your address?')
+    employees[name]['Phone'] = number
+    employees[name]['Address'] = address
     employees[name]['Wage'] = wage
     employees[name]['Hours'] = 0
 
@@ -119,7 +122,7 @@ def employee_story():
                     "I have a couple of different offers on the table...Are you willing to pay more than $12 an hour?" you say with confidence that you don't have. Minimium wage is $7.40 and $12 is asking a lot...
                     To your surprise, the manager nods, albiet reluctantly. He hands you an application (one much shorter than the first) for you to fill out.
                     ''')
-                    form(12.00)
+                    hire(12.00)
             
             elif q3 == '3':
                 print('''
@@ -139,8 +142,76 @@ def employee_story():
                     ''')
                 else:
                     print('''
-                    The manager hands you a short form to fill out and sends you on your way. You will be able to work 30 hours a week which is a lot more than you would have as a janitor. Apparently times are very rough in the banking industry and they have been cutting corners where they can.
+                    The manager hands you a short hire to fill out and sends you on your way. You will be able to work 30 hours a week which is a lot more than you would have as a janitor. Apparently times are very rough in the banking industry and they have been cutting corners where they can.
                     ''')
-                    form(8.00)
+                    hire(8.00)
 
-    #elif q1 == '3':
+    elif q1 == '3':
+        print('''
+        With a roll of your eyes and a toss of your hair, you reluctantly tell her your name. She quirks her eyebrow and squints a little. That buttfish face.
+        "I don't think you're cut out to be a teller with that attitude. You're going to have to work with a lot of angry people and if you can't handle recieving a little, you aren't going to make it long. Fortunately, we have positions open as a janitor.
+        ''')
+
+        q2 = input('''
+        You're pretty offended, slightly confused. You have two options:
+        1) You can leave angrily. You might not be qualified for a lot but you sure do know more than what's required for a janitor.
+        2) You can accept the job as the janitor. It's not what you came here for but you need a job pretty badly.
+        ''')
+
+        if q2 == '1':
+            print('''
+            With one last dirty look, you leave the bank, slamming the door behind you.
+            ''')
+        
+        else:
+            print('''
+            You have to fill out another hire, albiet one much shorter than the first one. You are making $10 an hour but can only work 5 hours a week. Some money is better than no money, but you're barely making enough gas money to make it to and from work. Maybe try with less attitude next time.
+            ''')
+
+    else:
+        print('''
+        You reply kindly and the teller looks at you curiously. With a much more polite tone, she begins to speak.
+        "Are you always this polite?"
+        ''')
+
+        q2 = input('''
+        You have two options to reply:
+        1) Yes
+        2) No
+        ''')
+
+        if q2 == '1':
+            print('''
+            Satisfied with your answer, the teller explains that your reaction to her rude action determines whether or not you are cut out for teller work. You passed, so you will be able to start at $8 an hour as a teller.
+            ''')
+            hire(8.00)
+
+        else:
+            print('''
+            The teller is intrigued.
+            "I can be mean if I need to be. Until that time comes, however, I try to treat everyone with kindness," you reply to her look of questioning.
+            The manager comes out as you finish with a smile on her face. "Spoken like a true manager," she says. "We are in need of another branch manager. Would you like to come on board?"
+            ''')
+
+            q3 = input('''
+            You have three options:
+            1) Accept the job as the manager. You're not for sure that you will be able to perhire adequately but the pay will be bomb.
+            2) You can push for the teller job. You know you'll be able to handle that one even if the pay isn't as great.
+            3) You can simply decline the job offer. Do you really want to work with these weirdos?
+            ''')
+
+            if q3 == '1':
+                print('''
+                You accept the job as the manager and get paid a whopping $20 an hour. You work 35 hours a week and couldn't be happier.
+                ''')
+
+            elif q3 == '2':
+                print('''
+                They relent and let you join the squad as a teller. You make a cool $10 an hour.
+                ''')
+                form(10.00)
+
+            else:
+                print('''
+                Deciding that the people at this bank are kind of weird, you decline politely and walk out. You plan on closing your account soon.
+                ''')
