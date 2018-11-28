@@ -1,14 +1,15 @@
 import basic_fun
+import employee_story
 from accounts import employees, members
 
 bank_open = True 
 while bank_open:
-    have_acct = input('Hello! Do you have an account with us? (y/n) ')
+    #Entrance for secret BYA stories
+    #Hiring Story: I would like a job
+    have_acct = input('Hello! How can I help you today? Do you have an account with us? (y/n) ')
 
     #Opens account
     if have_acct == 'n':
-        #Current options: yes, no
-        #Future options: build-your-own-adventure key words
         ident = input('Would you like to open an account with us today? (y/n) ')
         if ident == 'y':
             basic_fun.open_acc()
@@ -20,7 +21,7 @@ while bank_open:
     #Requests identification to locate account
     elif have_acct == 'y':
         #Current options: account number
-        #Future options: name, build-your-own-adventure key words
+        #Future options: name
         ident = input('How would you like to access your account? By account number? ')
         
         #Enters account based on account number
@@ -41,7 +42,11 @@ while bank_open:
             else:
                 basic_fun.transactions_occur(acc_num)
 
-    #Determines if another customer is ready to be served; hopefully will be replaced with timery
+    #Hiring BYOA
+    elif have_acct == 'I would like a job':
+        employee_story.employee_story()
+
+    #Determines if another customer is ready to be served; hopefully will be replaced with timer
     bank_open = input('Is the bank still open? (y/n) ')
     if bank_open == 'y':
         bank_open = True

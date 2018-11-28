@@ -8,19 +8,19 @@ address = ''
 def application():
     global number, name, address
     #Applicaation Questionaire
-    name = input('Please enter your Name.')
-    number = input('Please enter a valid 10-digit Phone Number.')
-    address = input('Please enter a valid Address.')
-    input('Are you older than 18 years of age? (Y/N)')
-    input('Please enter the last four digits of your social security number?')
+    name = input('Please enter your Name. ')
+    number = input('Please enter a valid 10-digit Phone Number. ')
+    address = input('Please enter a valid Address. ')
+    input('Are you older than 18 years of age? (Y/N) ')
+    input('Please enter the last four digits of your social security number? ')
     
-    military = input('Have you served in the Military? (Y/N)')
+    military = input('Have you served in the Military? (Y/N) ')
     if military == 'Y':
         input('Please enter the time you served.')
 
-    input('Have you been convicted of a crime? (Y/N')
+    input('Have you been convicted of a crime? (Y/N) ')
 
-    input('Are you willing to comply with a mandatory drug screening? (Y/N)')
+    input('Are you willing to comply with a mandatory drug screening? (Y/N) ')
 
     input(''' Are you appling part-time, full-time, or temporarily? 
     Enter P for Part-Time 
@@ -28,7 +28,7 @@ def application():
     Enter F for Full-Time
     ''')
     
-    input('What position are you applying for? (Janitor, Teller, Manager)')
+    input('What position are you applying for? (Janitor, Teller, Manager) ')
 
 def hire(wage):
     global name, number, address
@@ -209,7 +209,7 @@ def employee_story():
                 print('''
                 They relent and let you join the squad as a teller. You make a cool $10 an hour.
                 ''')
-                form(10.00)
+                hire(10.00)
 
             else:
                 print('''
