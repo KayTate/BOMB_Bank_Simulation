@@ -1,4 +1,4 @@
-import json, time, basic_fun, employee_story
+import json, time, basic_fun, hiring, robbery
 
 start = time.time()
 
@@ -14,6 +14,7 @@ bank_open = True
 while bank_open:
     #Entrance for BYOA stories
     #Hiring Story: I would like a job
+    #Robbery Story: Hands up
     have_acct = input('Hello! How can I help you today? Do you have an account with us? (y/n) ')
 
     #Opens account
@@ -50,8 +51,12 @@ while bank_open:
 
     #Hiring BYOA
     elif have_acct == 'I would like a job':
-        employee_story.employee_story()
+        hiring.hiring_story()
 
-    #Determines if the bank is still open; runs for 10 minutes
-    if time.time() - start > 600:
+    #Robbery BYOA
+    elif have_acct == 'Hands up':
+        robbery.robbery_story()
+
+    #Determines if the bank is still open; runs for 5 minutes
+    if time.time() - start > 300:
         bank_open = False

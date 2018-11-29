@@ -53,7 +53,7 @@ def hire(wage):
     em.close()
 
 #Story line function
-def employee_story():
+def hiring_story():
     print( '''
     The teller hands you an application.
     "Welcome," she says. "Here is an application. Please fill it out correctly."
