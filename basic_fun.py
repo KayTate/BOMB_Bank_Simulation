@@ -1,19 +1,31 @@
-from accounts import members, employees
-import validators
-import random
+import json, random, validators
+
+def read():
+	a = open('accounts.txt', 'r')
+	accounts = json.loads(a.read())
+	a.close()
+	return accounts
+
+def write(info):
+	a = open('accounts.txt', 'w')
+	a.write(json.dumps(info))
+	a.close()
 
 
 def open_acc():
+	#Loads account dictionary
+	accounts = read()
+
 	#Randomly generates a 10-digit number to act as the account number
 	acc_num = str(random.randint(1000000000,10000000000))
 	#Ensures that each account number is unique
-	while acc_num in members:
+	while acc_num in accounts:
 		acc_num = str(random.randint(1000000000,10000000000))
 		
-	members[acc_num] = {}
+	accounts[acc_num] = {}
 	
 	#Defines account type
-	members[acc_num]['Account'] = input('What type of account would you like to open? (C for Checking or S for Saving) ')
+	accounts[acc_num]['Account'] = input('What type of account would you like to open? (C for Checking or S for Saving) ')
 	
 	#Defines account holders as a list mapped to the account key
 	holder = []
@@ -27,55 +39,69 @@ def open_acc():
 	else:
 		name = input('What is the name on the account? ')
 		holder = [name]
+	accounts[acc_num]['Holder'] = holder
 	
 	#Asks for arbitrary phone number and address
-	members[acc_num]['Phone'] = input('What is your 10-digit phone number? (Just numbers) ')
-	while not validators.is_phone(members[acc_num]['Phone']):
-		members[acc_num]['Phone'] = input('What is your 10-digit phone number? (Just numbers) ')
-	members[acc_num]['Address'] = input('What is your address? ')
+	accounts[acc_num]['Phone'] = input('What is your 10-digit phone number? (Just numbers) ')
+	while not validators.is_phone(accounts[acc_num]['Phone']):
+		accounts[acc_num]['Phone'] = input('What is your 10-digit phone number? (Just numbers) ')
+	accounts[acc_num]['Address'] = input('What is your address? ')
     
     #Creates PIN number
 	pin = str(random.randint(1000,10000))
-	members[acc_num]['PIN'] = pin
+	accounts[acc_num]['PIN'] = pin
 	print('Your account number is ' + acc_num + ' and your Personalized Identification Number is ' + pin + '. You will need this information to access your account in the future.')
 	
 	#Sets balance to 0
-	members[acc_num]['Balance'] = 0
+	accounts[acc_num]['Balance'] = 0
+
+	#Saves account information back to text file
+	accnts = open('accounts.txt', 'w')
+	accnts.write(json.dumps(accounts))
+	accnts.close()
 
 def check_balance(acc_num):
-    return members[acc_num]['Balance']
+	accounts = read()
+	return accounts[acc_num]['Balance']
 
 def withdrawl(acc_num, amount):
-    current = check_balance(acc_num)
-    new = current - int(amount)
-
-    #If the account becomes negative, they will not be able to withdraw that amount
-    if new < 0:
-        print('Withdrawing this amount will result in a negative balance. Please deposit more money before requesting this amount again.')
-        return current
-    else:
-        members[acc_num]['Balance'] = new
-        print('You have successfully withdrawn $' + str(amount) + ' from your account.')
-        return new
+	accounts = read()
+	current = check_balance(acc_num)
+	new = current - int(amount)
+	
+	#If the account becomes negative, they will not be able to withdraw that amount
+	if new < 0:
+		print('Withdrawing this amount will result in a negative balance. Please deposit more money before requesting this amount again.')
+		return current
+	else:
+		accounts[acc_num]['Balance'] = new
+		print('You have successfully withdrawn $' + str(amount) + ' from your account.')
+		write(accounts)
+		return new
 
 def deposit(acc_num, amount):
-    members[acc_num]['Balance'] += int(amount)
-    print('You have successfully deposited $' + str(amount) + ' into your account.')
-    return members[acc_num]['Balance']
+	accounts = read()
+	accounts[acc_num]['Balance'] += int(amount)
+	print('You have successfully deposited $' + str(amount) + ' into your account.')
+	
+	write(accounts)
+	return accounts[acc_num]['Balance']
 
 def transfer(origin, destin, amount):
+	accounts = read()
 	if validators.is_same(origin, destin):
 		print('You cannot transfer money to the original account')
-		return members[origin]['Balance']
-	members[destin]['Balance'] += int(amount)
-	members[origin]['Balance'] -= int(amount)
+		return accounts[origin]['Balance']
+	accounts[destin]['Balance'] += int(amount)
+	accounts[origin]['Balance'] -= int(amount)
 	print('You have successfully transfered $' + str(amount) + ' into the account ending in ' + destin[6:] + '.')
-	return members[origin]['Balance']
+	write(accounts)
+	return accounts[origin]['Balance']
 
 def transactions_occur(acc_num):
 	customer = True
 	while customer:
-		function = input('What would you like to do to day? Check your balance, deposit, withdraw, or transfer money? (C, D, W, T)')
+		function = input('What would you like to do to day? Check your balance, deposit, withdraw, or transfer money? (C, D, W, T) ')
 		
 		if function == 'D':
 			amount = input('How much would you like to deposit? ')

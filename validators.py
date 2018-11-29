@@ -1,10 +1,10 @@
-from accounts import employees, members
-
+#Catches same-account transfers
 def is_same(origin, destin):
     if origin == destin:
         return True
     return False
 
+#Catches invalid phone numbers
 def is_phone(number):
     if len(number) != 10:
         print('This is not a valid 10-digit number.')

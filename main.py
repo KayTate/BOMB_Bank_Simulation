@@ -1,10 +1,18 @@
-import basic_fun
-import employee_story
-from accounts import employees, members
+import json, time, basic_fun, employee_story
+
+start = time.time()
+
+e = open('employees.txt', 'r')
+employees = json.loads(e.read())
+e.close()
+
+a = open('accounts.txt', 'r')
+accounts = json.loads(a.read())
+a.close()
 
 bank_open = True 
 while bank_open:
-    #Entrance for secret BYA stories
+    #Entrance for BYOA stories
     #Hiring Story: I would like a job
     have_acct = input('Hello! How can I help you today? Do you have an account with us? (y/n) ')
 
@@ -31,12 +39,10 @@ while bank_open:
             name = input('What is your name? ')
 
             #Decides whether or not the user has access to the account
-            if pin != members[acc_num]['PIN']:
+            if pin != accounts[acc_num]['PIN']:
                 print('This is not the correct PIN for this account')
-                customer = False
-            elif name not in members[acc_num]['Holder']:
+            elif name not in accounts[acc_num]['Holder']:
                 print('You are not an account holder for this account.')
-                customer = False
             
             #Transactions occur until the user is done
             else:
@@ -46,9 +52,6 @@ while bank_open:
     elif have_acct == 'I would like a job':
         employee_story.employee_story()
 
-    #Determines if another customer is ready to be served; hopefully will be replaced with timer
-    bank_open = input('Is the bank still open? (y/n) ')
-    if bank_open == 'y':
-        bank_open = True
-    else:
+    #Determines if the bank is still open; runs for 10 minutes
+    if time.time() - start > 600:
         bank_open = False
