@@ -47,6 +47,9 @@ def open_acc():
 		accounts[acc_num]['Phone'] = input('What is your 10-digit phone number? (Just numbers) ')
 	accounts[acc_num]['Address'] = input('What is your address? ')
     
+	#Creates account alias:
+	accounts[acc_num]['Account Alias'] = input('Give me an alias for the account. This is similar to a nickname for the account.')
+	
     #Creates PIN number
 	pin = str(random.randint(1000,10000))
 	accounts[acc_num]['PIN'] = pin
@@ -124,4 +127,7 @@ def transactions_occur(acc_num):
 		if transaction == 'y':
 			customer = True
 		else:
+			print('''
+			Thank you for banking with us today!
+			''')
 			customer = False

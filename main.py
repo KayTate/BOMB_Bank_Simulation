@@ -1,4 +1,4 @@
-import json, time, basic_fun, hiring, robbery
+import json, time, random, basic_fun, hiring, robbery
 
 start = time.time()
 
@@ -10,29 +10,48 @@ a = open('accounts.txt', 'r')
 accounts = json.loads(a.read())
 a.close()
 
+#Selects Employee
+emp = list(employees.keys())
+employee = random.choice(emp)
+
 bank_open = True 
 while bank_open:
     #Entrance for BYOA stories
     #Hiring Story: I would like a job
-    #Robbery Story: Hands up
-    have_acct = input('Hello! How can I help you today? Do you have an account with us? (y/n) ')
+    #Robbery Story: I want the money
+    #Close: closes the bank early
+    have_acct = input('Hello! My name is ' + employee + ', how can I help you today? Do you have an account with us? (y/n) ')
 
     #Opens account
-    if have_acct == 'n':
+    if have_acct in 'nN':
         ident = input('Would you like to open an account with us today? (y/n) ')
-        if ident == 'y':
+        if ident in 'Yy':
             basic_fun.open_acc()
             new_trans = input('Would you like to complete more transactions? (y/n) ')
-            if new_trans == 'y': 
+            if new_trans in 'Yy': 
                 acc_num = input('For security purposes, please give me the account number for the account you just created. ')
                 basic_fun.transactions_occur(acc_num)
+            else:
+                print('''
+                Thank you for banking with us today!
+                ''')
+        else:
+            print('''
+            Have a good day
+            ''')
 
     #Requests identification to locate account
-    elif have_acct == 'y':
+    elif have_acct in 'yY':
         #Current options: account number
         #Future options: name
         ident = input('How would you like to access your account? By account number? ')
         
+        while ident != 'account number':
+            ident = input('''
+            Please give me valid input
+            How would you like to access your account? By account number? 
+            ''')
+
         #Enters account based on account number
         if ident == 'account number':
             acc_num = input('What is the account number? ')
@@ -54,9 +73,26 @@ while bank_open:
         hiring.hiring_story()
 
     #Robbery BYOA
-    elif have_acct == 'Hands up':
+    elif have_acct == 'I want the money':
         robbery.robbery_story()
+
+    #Early closing
+    elif have_acct == "Close":
+        bank_open = False
+        print('''
+        We have closed early today.
+        ''')
+        employees[employee]['Hours'] += ((time.time() - start) // 60)
 
     #Determines if the bank is still open; runs for 5 minutes
     if time.time() - start > 300:
         bank_open = False
+        print('''
+        Unfortunantly, we are closed for the day. Come back tomorrow!
+        ''')
+        #Changes the hours for the employee
+        employees[employee]['Hours'] += 5
+
+e = open('employees.txt', 'w')
+e.write(json.dumps(employees))
+e.close()
