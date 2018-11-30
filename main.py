@@ -82,7 +82,7 @@ while bank_open:
         print('''
         We have closed early today.
         ''')
-        employees[employee]['Hours'] += ((time.time() - start) // 60)
+        employees[employee]['Hours'] += int(((time.time() - start) // 60))
 
     #Determines if the bank is still open; runs for 5 minutes
     if time.time() - start > 300:

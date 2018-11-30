@@ -35,7 +35,8 @@ def open_acc():
 		holder = [name]
 		while name != 'n':
 			name = input('What is the next name on the account? Enter "n" when there are no more account holders. ')
-			holder.append(name)
+			if name != 'n':
+				holder.append(name)
 	else:
 		name = input('What is the name on the account? ')
 		holder = [name]
@@ -48,7 +49,7 @@ def open_acc():
 	accounts[acc_num]['Address'] = input('What is your address? ')
     
 	#Creates account alias:
-	accounts[acc_num]['Account Alias'] = input('Give me an alias for the account. This is similar to a nickname for the account.')
+	accounts[acc_num]['Account Alias'] = input('Give me an alias for the account. This is similar to a nickname for the account. ')
 	
     #Creates PIN number
 	pin = str(random.randint(1000,10000))
