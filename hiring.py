@@ -1,13 +1,14 @@
-from accounts import employees
-import validators
+import json, validators
 
 name = ''
 number = ''
 address = ''
 
+#Unneccesary application
+#Saves name, number, and address just in case the user gets hired though
 def application():
     global number, name, address
-    #Applicaation Questionaire
+
     name = input('Please enter your Name. ')
     number = input('Please enter a valid 10-digit Phone Number. ')
     address = input('Please enter a valid Address. ')
@@ -30,15 +31,29 @@ def application():
     
     input('What position are you applying for? (Janitor, Teller, Manager) ')
 
+#Adds new hire to text file; takes wage as paramater as the wage will be different based on the story path
 def hire(wage):
     global name, number, address
+
+    #Loads employee dictionary
+    e = open('employees.txt', 'r')
+    employees = json.loads(e.read())
+    e.close()
+
+    #Creates dictionary entry for the newly hired employee
     employees[name] = {}
     employees[name]['Phone'] = number
     employees[name]['Address'] = address
     employees[name]['Wage'] = wage
     employees[name]['Hours'] = 0
 
-def employee_story():
+    #Saves this dictionary to the text file of employees
+    em = open('employees.txt', 'w')
+    em.write(json.dumps(employees))
+    em.close()
+
+#Story line function
+def hiring_story():
     print( '''
     The teller hands you an application.
     "Welcome," she says. "Here is an application. Please fill it out correctly."
@@ -215,3 +230,7 @@ def employee_story():
                 print('''
                 Deciding that the people at this bank are kind of weird, you decline politely and walk out. You plan on closing your account soon.
                 ''')
+    
+    print('''
+    ------FIN------
+    ''')
