@@ -132,3 +132,8 @@ def transactions_occur(acc_num):
 			Thank you for banking with us today!
 			''')
 			customer = False
+
+def alias_sign_in(alias, name, pin):
+	accounts = read()
+
+	aliases = [accounts[acc_num]['Account Alias'] for acc_num in accounts if name in accounts[acc_num]['Holder']]
