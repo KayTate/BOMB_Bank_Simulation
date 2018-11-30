@@ -14,7 +14,7 @@ def application():
     address = input('Please enter a valid Address. ')
     input('Are you older than 18 years of age? (Y/N) ')
     input('Please enter the last four digits of your social security number? ')
-    
+     
     military = input('Have you served in the Military? (Y/N) ')
     if military == 'Y':
         input('Please enter the time you served.')
