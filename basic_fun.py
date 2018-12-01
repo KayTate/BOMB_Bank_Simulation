@@ -138,3 +138,39 @@ def transactions_occur(acc_num):
 			Thank you for banking with us today!
 			''')
 			customer = False
+
+def payment():
+	# Handle text files
+	e = open('employees.txt', 'r')
+	employees = json.loads(e.read())
+	e.close()
+
+	a = open('accounts.txt','r')
+	accounts = json.loads(a.read())
+	a.close()
+
+	#Creates dictionary mapping the employee to their employee account number
+	emp_accounts = {}
+	for account in accounts:
+		if accounts[account]['Account'] == 'E':
+			name = accounts[account]['Holder'][0]
+			emp_accounts[name] = account
+
+	#Calculates check and adds payment
+	for employee in employees:
+		hours = employees[employee]['Hours']
+		wage = employees[employee]['Wage']
+		check = hours * wage
+		accounts[emp_accounts[employee]]['Balance'] += check
+		employees[employee]['Hours'] = 0
+
+	#Saves files
+	e = open('employees.txt','w')
+	e.write(json.dumps(employees))
+	e.close()
+
+	a = open('accounts.txt','w')
+	a.write(json.dumps(accounts))
+	a.close()
+
+	return employees

@@ -7,19 +7,20 @@ employees = json.loads(e.read())
 e.close()
 
 a = open('accounts.txt', 'r')
-accounts = json.loads(a.read())
+accounts = json.loads(a.read()) 
 a.close()
 
 #Selects Employee
 emp = list(employees.keys())
 employee = random.choice(emp)
 
-bank_open = True 
+bank_open = True
 while bank_open:
     #Entrance for BYOA stories
     #Hiring Story: I would like a job
     #Robbery Story: I want the money
     #Close: closes the bank early; primarily for testing purposes
+    #Pay tellers: Payment
     have_acct = input('Hello! My name is ' + employee + ', how can I help you today? Do you have an account with us? (y/n) ')
 
     #Opens account
@@ -89,7 +90,7 @@ while bank_open:
             while alias not in aliases:
                 alias = input('''
                 That was not a suggested alias. Please give me a valid alias.
-                ''')
+                ''' )
 
             #Gets account number and PIN
             acc_num = helpers.find_account(alias, name)
@@ -113,7 +114,7 @@ while bank_open:
         robbery.robbery_story()
 
     #Early closing
-    elif have_acct == "Close":
+    elif have_acct == 'Close':
         bank_open = False
         print('''
         We have closed early today.
@@ -122,6 +123,11 @@ while bank_open:
         #Adds hours and interest
         employees[employee]['Hours'] += int(((time.time() - start) // 60))
         helpers.do_interest()
+
+    #Pay tellers
+    elif have_acct == 'Payment':
+        employees = basic_fun.payment()
+        print('''The tellers have been paid''')
 
     #Determines if the bank is still open; runs for 10 minutes
     if time.time() - start > 600:

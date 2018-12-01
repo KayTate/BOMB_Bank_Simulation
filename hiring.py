@@ -1,4 +1,4 @@
-import json, validators
+import json, random, validators
 
 name = ''
 number = ''
@@ -35,6 +35,11 @@ def hire(wage):
     employees = json.loads(e.read())
     e.close()
 
+    #Loads account dictionary
+    a = open('accounts.txt', 'r')
+    accounts = json.loads(a.read())
+    a.close()
+
     #Creates dictionary entry for the newly hired employee
     employees[name] = {}
     employees[name]['Phone'] = number
@@ -42,10 +47,30 @@ def hire(wage):
     employees[name]['Wage'] = wage
     employees[name]['Hours'] = 0
 
+    #Creates dictionary entry for the employee banking account
+    acc_num = str(random.randint(1000000000,10000000000))
+    while acc_num in accounts:
+        acc_num = str(random.randint(1000000000,10000000000))
+    accounts[acc_num] = {}
+    accounts[acc_num]['Account'] = 'E'
+    accounts[acc_num]['Holder'] = [name]
+    accounts[acc_num]['Phone'] = number
+    accounts[acc_num]['Address'] = address
+    accounts[acc_num]['Account Alias'] = 'Employee Account' 
+    pin = str(random.randint(1000,10000))
+    accounts[acc_num]['PIN'] = pin
+    accounts[acc_num]['Balance'] = 0
+
     #Saves this dictionary to the text file of employees
-    em = open('employees.txt', 'w')
-    em.write(json.dumps(employees))
-    em.close()
+    e = open('employees.txt', 'w')
+    e.write(json.dumps(employees))
+    e.close()
+
+    #Saves the account to the account dictionary
+    a = open('accounts.txt','w')
+    a.write(json.dumps(accounts))
+    a.close()
+
 
 #Story line function
 def hiring_story():

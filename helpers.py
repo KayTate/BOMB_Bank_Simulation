@@ -22,16 +22,18 @@ def find_account(alias, name):
 	
 	#Note: Technically, it is possible for the name to not be listed under any of the accounts; however, since this will only be called after we have established that they are a holder of an account with that alias, we shouldn't encounter that error
 
+
 def add_interest(acc_num):
     accounts = basic_fun.read()
     percent = accounts[acc_num]['Balance'] * .02
     accounts[acc_num]['Balance'] += percent
     return accounts[acc_num]['Balance']
 
+
 def do_interest():
     accounts = basic_fun.read()
 
-    #Populates a list of checking accounts
+    #Populates a list of savigns accounts
     savings = [acc_num for acc_num in accounts if accounts[acc_num]['Account'] == 'S']
     
     #Adding the interest
