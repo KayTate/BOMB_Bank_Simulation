@@ -48,7 +48,7 @@ def open_acc():
 	while not validators.is_phone(accounts[acc_num]['Phone']):
 		accounts[acc_num]['Phone'] = input('What is your 10-digit phone number? (Just numbers) ')
 	accounts[acc_num]['Address'] = input('What is your address? ')
-    
+	
 	#Creates account alias:
 	accounts[acc_num]['Account Alias'] = input('Give me an alias for the account. This is similar to a nickname for the account. ')
 	

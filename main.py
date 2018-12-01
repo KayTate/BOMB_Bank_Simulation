@@ -1,4 +1,4 @@
-import json, time, random, basic_fun, hiring, robbery
+import json, time, random, basic_fun, hiring, robbery, validators
 
 start = time.time()
 
@@ -26,15 +26,20 @@ while bank_open:
     if have_acct in 'nN':
         ident = input('Would you like to open an account with us today? (y/n) ')
         if ident in 'Yy':
-            basic_fun.open_acc()
-            new_trans = input('Would you like to complete more transactions? (y/n) ')
-            if new_trans in 'Yy': 
-                acc_num = input('For security purposes, please give me the account number for the account you just created. ')
-                basic_fun.transactions_occur(acc_num)
+            #Asks for and verifies age
+            year = int(input('What year were you born in? '))
+            if not validators.is_adult(year):
+                print('Unfortunantly, you are too young to hold this account. You must be 18 or older.')
             else:
-                print('''
-                Thank you for banking with us today!
-                ''')
+                basic_fun.open_acc()
+                new_trans = input('Would you like to complete more transactions (y/n) ')
+                if new_trans in 'Yy':
+                    acc_num = input('For security purposes, please give me the account number for the account you just created. ')
+                    basic_fun.transactions_occur(acc_num)
+                else:
+                    print('''
+                    Thank you for banking with us today!
+                    ''')
         else:
             print('''
             Have a good day
