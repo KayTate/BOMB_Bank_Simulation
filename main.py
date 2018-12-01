@@ -1,4 +1,4 @@
-import json, time, random, basic_fun, hiring, robbery, validators
+import json, time, random, basic_fun, hiring, robbery, validators, helpers
 
 start = time.time()
 
@@ -80,15 +80,19 @@ while bank_open:
             #Gets name and possible aliases
             name = input('What is your name? ')
 
-            aliases = basic_fun.get_aliases(name)
+            aliases = helpers.get_aliases(name)
             print(aliases)
             alias = input('''
             These are the bank accounts we have for you. Which would you like to enter?
             Please give me the full alias (capitalization matters).
             ''')
+            while alias not in aliases:
+                alias = input('''
+                That was not a suggested alias. Please give me a valid alias.
+                ''')
 
             #Gets account number and PIN
-            acc_num = basic_fun.find_account(alias, name)
+            acc_num = helpers.find_account(alias, name)
             pin = input('What is the PIN for this account? ')
 
             #Decides whether this is the correct PIN for the account
@@ -114,16 +118,23 @@ while bank_open:
         print('''
         We have closed early today.
         ''')
-        employees[employee]['Hours'] += int(((time.time() - start) // 60))
 
-    #Determines if the bank is still open; runs for 5 minutes
+        #Adds hours and interest
+        employees[employee]['Hours'] += int(((time.time() - start) // 60))
+        helpers.do_interest()
+
+    #Determines if the bank is still open; runs for 10 minutes
     if time.time() - start > 600:
         bank_open = False
         print('''
         Unfortunantly, we are closed for the day. Come back tomorrow!
         ''')
+
         #Changes the hours for the employee
         employees[employee]['Hours'] += 10
+
+        #Gives checking accounts their interest 
+        helpers.do_interest()
 
 e = open('employees.txt', 'w')
 e.write(json.dumps(employees))
