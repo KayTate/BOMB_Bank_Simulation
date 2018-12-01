@@ -26,9 +26,29 @@ def complaint_to_man():
         The new manager gets up from the teller booth and walks towards a door with the word \'Manager\' on it. Hmmmmm, maybe you should have just gone over there first, but it doesn\'t matter at this point. 
         They are gone for approximately 10 minutes before they walk out with a new golden badge with their name on it.
         I guess the manager is just special like that....
-        They come back to 
+        They come back around to face you outside of the booth.
+        "Alright," they begin, "let\'s get down to business."
   ''')
+        q2 = input('''
+        You look at the new manager. You are amazed that such a simpleton as yourself has so much power...maybe you should use this incredible ability to persuade elsewhere, maybe your crush will say yes to going out.
+        But forget about that right now, you have business to take care of. 
+        You have two options
+        1) Follow the new manager and successfully enter your complaint. You made them so they will probably listen and take your concerns into consideration.
+        2) Use your incredbily persuasive abilities to get a personal teller at B.O.M.B, this will definitely come in handy...personal transactions, no lines, just pure bliss and easy banking (something that will never exist in modern society).
+        
+        ''')
+        if q2 == '1':
+            print('''
+
+            ''')
+        else:
+            print('''
+            ''')
 
     elif q1 == '2':
+        print('''
+        ''')
 
     else:
+        print('''
+        ''')
