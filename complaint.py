@@ -39,7 +39,24 @@ def complaint_to_man():
         ''')
         if q2 == '1':
             print('''
+            "I just have a couple of suggestions on how to fight instead of fleeing west," you state casually to the manager
+            They look at you quizically. "Uhh what? We aren\'t fleeting anywhere. What the fuck are you ranting about?"
+            "Nothing..." you say underneath your breath, "Anyway, take me to your corridor."
 
+            The smiles and motions for you to follow them. Strangely, the manager leads you past the door with the actual \'Manager\' label on it and into a dark room deep within the office. You had no idea it was actually this large. It looked so small on the outside.
+            Eventually you reach a door with a strange orange glow coming out of its cracks. You feel warm... no...hot... it\'s considerably warm back here. You hope that this door is\'t actually a furnace meant for your beautiful bod. 
+            The manager turns around and says, "Welcome, we can sit down and speak here" as they turn the doornob. You notice that the doorknob looks incredibly warm...it\'s fucking glowing from all of the heat that its holding. You wonder how the manager is holding it so confidently and without any sense of pain. Maybe their neurons aren\'t on today.
+            
+            They open the door and you step in to find that it\'s hot as all fuck in there...but not because there is a large furnace...no it\'s just the thermostat. It reads 100 degrees Fahrenheit. You are confused at the heat, but decide not to say anything about it.
+            You take a sit in right-most chair in front of the large oak wood desk and brown leather recliner. The managers sits in the recliner and intertwines thier hands. Villanous like...weird.
+            "How can I help you this fine afternoon?" The manager smirks at you.
+
+            ''')
+            q3 = input('''
+            You have three options:
+            1) Attempt to ignore how hot it is in the room. You are wearing your Fav sweater so it\'s probably just you and tell them about your complaints. 
+            2) Ask about the goddamn heat. No human should work in these conditions and the manager cannot be working properly with such high temperatures. Quite frankly, you\'re concerned that they are\'t doing okay.
+            3) Just get up and leave. You've had enough of B.O.M.B. From their poor services to inconsdiderate temperatures, you just cannot stand to be in such a hostile environment. You shall take your business elsewhere.
             ''')
         else:
             print('''
