@@ -6,6 +6,7 @@ def read():
 	a.close()
 	return accounts
 
+
 def write(info):
 	a = open('accounts.txt', 'w')
 	a.write(json.dumps(info))
@@ -64,9 +65,11 @@ def open_acc():
 	accnts.write(json.dumps(accounts))
 	accnts.close()
 
+
 def check_balance(acc_num):
 	accounts = read()
 	return accounts[acc_num]['Balance']
+
 
 def withdrawl(acc_num, amount):
 	accounts = read()
@@ -83,6 +86,7 @@ def withdrawl(acc_num, amount):
 		write(accounts)
 		return new
 
+
 def deposit(acc_num, amount):
 	accounts = read()
 	accounts[acc_num]['Balance'] += int(amount)
@@ -90,6 +94,7 @@ def deposit(acc_num, amount):
 	
 	write(accounts)
 	return accounts[acc_num]['Balance']
+
 
 def transfer(origin, destin, amount):
 	accounts = read()
@@ -101,6 +106,7 @@ def transfer(origin, destin, amount):
 	print('You have successfully transfered $' + str(amount) + ' into the account ending in ' + destin[6:] + '.')
 	write(accounts)
 	return accounts[origin]['Balance']
+
 
 def transactions_occur(acc_num):
 	customer = True
@@ -133,7 +139,25 @@ def transactions_occur(acc_num):
 			''')
 			customer = False
 
-def alias_sign_in(alias, name, pin):
+
+def get_aliases(name):
 	accounts = read()
 
+	#Populates a list of that holder's account aliases
 	aliases = [accounts[acc_num]['Account Alias'] for acc_num in accounts if name in accounts[acc_num]['Holder']]
+
+	return aliases
+
+
+def find_account(alias, name):
+	accounts = read()
+
+	#Finds accounts with the alias in question
+	acct_with_alias = [acc_num for acc_num in accounts if alias in accounts[acc_num]['Account Alias']]
+
+	#Finds accounts with the holder listed
+	for acct in acct_with_alias:
+		if name in accounts[acct]['Holder']:
+			return acct
+	
+	#Note: Technically, it is possible for the name to not be listed under any of the accounts; however, since this will only be called after we have established that they are a holder of an account with that alias, we shouldn't encounter that error
