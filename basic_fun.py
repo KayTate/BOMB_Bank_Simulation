@@ -1,4 +1,4 @@
-import json, random, validators
+import json, random, validators, helpers
 
 def read():
 	a = open('accounts.txt', 'r')
@@ -26,7 +26,7 @@ def open_acc():
 	accounts[acc_num] = {}
 	
 	#Defines account type
-	accounts[acc_num]['Account'] = input('What type of account would you like to open? (C for Checking or S for Saving) ')
+	accounts[acc_num]['Account'] = input('What type of account would you like to open? (C for Checking, S for Saving, or B for Business) ')
 	
 	#Defines account holders as a list mapped to the account key
 	holder = []
@@ -50,7 +50,11 @@ def open_acc():
 	accounts[acc_num]['Address'] = input('What is your address? ')
 	
 	#Creates account alias:
-	accounts[acc_num]['Account Alias'] = input('Give me an alias for the account. This is similar to a nickname for the account. ')
+	aliases = validators.is_holder(holder)
+	alias = input('Give me an alias for the account. This is similar to a nickname for the account. ')
+	while alias in aliases:
+			alias = input('You already have an account with that alias. Please give me a new one.')
+	accounts[acc_num]['Account Alias'] = alias
 	
     #Creates PIN number
 	pin = str(random.randint(1000,10000))
@@ -106,6 +110,44 @@ def transfer(origin, destin, amount):
 	print('You have successfully transfered $' + str(amount) + ' into the account ending in ' + destin[6:] + '.')
 	write(accounts)
 	return accounts[origin]['Balance']
+
+
+def close_acct():
+	accounts = read()
+
+	confirm = input('''
+	Are you sure you would like to close your account?
+	Y for Yes, N for No
+	''')
+
+	if confirm in 'Nn':
+		print('Thank you for staying with us. Have a great day!')
+	else:
+		acc_num = input('''
+		We are sorry to lose you today!
+		What is your account number?
+		''')
+		phone = input('''
+		For safety purposes, we will need you to confirm all of the information in your account.
+		Can you get us the phone number on the account? ''')
+		address = input('''
+		The address for the account? ''')
+		alias = input('''
+		The account alias? ''')
+		balance = int(input('''
+		The balance on the account? '''))
+		name = input('''
+		Your name? ''')
+		pin = input('''
+		And finally the PIN on the account? ''')
+
+		if (phone != accounts[acc_num]['Phone'] or address != accounts[acc_num]['Address'] or alias != accounts[acc_num]['Account Alias'] or balance != int(accounts[acc_num]['Balance']) or pin != accounts[acc_num]['PIN'] or name not in accounts[acc_num]['Holder']):
+			print('''I'm sorry; some of the information you have given me is incorrect and I will not be able to close your account today.''')
+
+		else:
+			accounts.pop(acc_num)
+			print('''Your account has been closed. Have a great day.''')
+			write(accounts)
 
 
 def transactions_occur(acc_num):

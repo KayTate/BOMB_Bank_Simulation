@@ -42,3 +42,11 @@ def do_interest():
         accounts[acct]['Balance'] = new
 
     basic_fun.write(accounts)
+
+
+def get_holders():
+    accounts = basic_fun.read()
+    
+    holders = [name for num in accounts for name in accounts[num]['Holder']]
+
+    return holders

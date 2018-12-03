@@ -19,8 +19,9 @@ while bank_open:
     #Entrance for BYOA stories
     #Hiring Story: I would like a job
     #Robbery Story: I want the money
-    #Close: closes the bank early; primarily for testing purposes
+    #Close bank early: Close
     #Pay tellers: Payment
+    #Close Account: I would like to close my account
     have_acct = input('Hello! My name is ' + employee + ', how can I help you today? Do you have an account with us? (y/n) ')
 
     #Opens account
@@ -110,7 +111,7 @@ while bank_open:
         hiring.hiring_story()
 
     #Robbery BYOA
-    elif have_acct == 'I want the money':
+    elif have_acct == 'I want the money': 
         robbery.robbery_story()
 
     #Early closing
@@ -128,6 +129,14 @@ while bank_open:
     elif have_acct == 'Payment':
         employees = basic_fun.payment()
         print('''The tellers have been paid''')
+
+    #Closes account
+    elif have_acct == 'I would like to close my account':
+        basic_fun.close_acct()
+
+    #Catches other input
+    else:
+        print('''I'm sorry...we don't do that here.''')
 
     #Determines if the bank is still open; runs for 10 minutes
     if time.time() - start > 600:
