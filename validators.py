@@ -28,16 +28,3 @@ def is_adult(year):
     if age < 18:
         return False
     return True
-
-#Account holder
-def is_holder(holders):
-    members = helpers.get_holders()
-
-    aliases = []
-    for name in holders:
-        if name in members:
-            name_alias = helpers.get_aliases(name)
-            for alias in name_alias:
-                aliases.append(alias)
-
-    return aliases

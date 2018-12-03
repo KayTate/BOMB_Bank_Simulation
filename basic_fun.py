@@ -1,18 +1,18 @@
 import json, random, validators, helpers
 
+#Handles text files
 def read():
 	a = open('accounts.txt', 'r')
 	accounts = json.loads(a.read())
 	a.close()
 	return accounts
-
-
 def write(info):
 	a = open('accounts.txt', 'w')
 	a.write(json.dumps(info))
-	a.close()
+	a.close() 
 
 
+#Opens Accounts
 def open_acc():
 	#Loads account dictionary
 	accounts = read()
@@ -50,7 +50,7 @@ def open_acc():
 	accounts[acc_num]['Address'] = input('What is your address? ')
 	
 	#Creates account alias:
-	aliases = validators.is_holder(holder)
+	aliases = helpers.is_holder(holder)
 	alias = input('Give me an alias for the account. This is similar to a nickname for the account. ')
 	while alias in aliases:
 			alias = input('You already have an account with that alias. Please give me a new one.')
@@ -70,11 +70,13 @@ def open_acc():
 	accnts.close()
 
 
+#Checks balances
 def check_balance(acc_num):
 	accounts = read()
 	return accounts[acc_num]['Balance']
 
 
+#Withdraws money
 def withdrawl(acc_num, amount):
 	accounts = read()
 	current = check_balance(acc_num)
@@ -91,6 +93,7 @@ def withdrawl(acc_num, amount):
 		return new
 
 
+#Deposits money
 def deposit(acc_num, amount):
 	accounts = read()
 	accounts[acc_num]['Balance'] += int(amount)
@@ -100,6 +103,7 @@ def deposit(acc_num, amount):
 	return accounts[acc_num]['Balance']
 
 
+#Transfers money
 def transfer(origin, destin, amount):
 	accounts = read()
 	if validators.is_same(origin, destin):
@@ -112,6 +116,7 @@ def transfer(origin, destin, amount):
 	return accounts[origin]['Balance']
 
 
+#Closes account
 def close_acct():
 	accounts = read()
 
@@ -150,6 +155,7 @@ def close_acct():
 			write(accounts)
 
 
+#Function call for all transaction functions (except close account)
 def transactions_occur(acc_num):
 	customer = True
 	while customer:
@@ -181,6 +187,8 @@ def transactions_occur(acc_num):
 			''')
 			customer = False
 
+
+#Pays the tellers
 def payment():
 	# Handle text files
 	e = open('employees.txt', 'r')

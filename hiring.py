@@ -7,8 +7,7 @@ age = ''
 crime = ''
 drug = ''
 
-#Unneccesary application
-#Saves name, number, and address just in case the user gets hired though
+#Saves name, number, and address just in case the user gets hired but is "thrown away"
 def application():
     global number, name, address, age, crime, drug
 
@@ -25,6 +24,7 @@ def application():
     crime = input('Have you been convicted of a crime? (Y/N) ')
 
     drug = input('Are you willing to comply with a mandatory drug screening? (Y/N) ')
+
 
 #Adds new hire to text file; takes wage as paramater as the wage will be different based on the story path
 def hire(wage):
