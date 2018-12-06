@@ -152,6 +152,7 @@ while bank_open:
     else:
         print('''I'm sorry...we don't do that here.''')
 
+
     #Determines if the bank is still open; runs for 10 minutes
     if time.time() - start > 600:
         bank_open = False
