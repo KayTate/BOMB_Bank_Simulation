@@ -1,4 +1,4 @@
-import json, time, random, basic_fun, hiring, robbery, validators, helpers
+import json, time, random, basic_fun, hiring, robbery, complaint, stock, validators, helpers
 
 start = time.time()
 
@@ -19,10 +19,14 @@ while bank_open:
     #Entrance for BYOA stories
     #Hiring Story: I would like a job
     #Robbery Story: I want the money
+    #"Can I speak to the manager?" Story: Where is your manager
     #Close bank early: Close
     #Pay tellers: Payment
     #Close Account: I would like to close my account
-    have_acct = input('Hello! My name is ' + employee + ', how can I help you today? Do you have an account with us? (y/n) ')
+    print('Hello! My name is ' + employee + ', how can I help you today?')
+    have_acct = input('''
+    Would you like to speak to a trade specialist (T) or enter an account (Y/N)?
+    ''')
 
     #Opens account
     if have_acct in 'nN':
@@ -114,6 +118,10 @@ while bank_open:
     elif have_acct == 'I want the money': 
         robbery.robbery_story()
 
+    #Manager BYOA
+    elif have_acct == 'Where is your manager':
+        complaint.complaint_to_man()
+
     #Early closing
     elif have_acct == 'Close':
         bank_open = False
@@ -133,6 +141,12 @@ while bank_open:
     #Closes account
     elif have_acct == 'I would like to close my account':
         basic_fun.close_acct()
+
+
+    #Speak to Trade Specialist
+    elif have_acct in 'Tt':
+        stock.trader()
+
 
     #Catches other input
     else:
