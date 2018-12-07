@@ -12,7 +12,7 @@ def complaint_to_man():
     You have three options:
     1) You could tell the teller that they are the new acting manager and flip them off confidently.
     2) You could storm into the \'Manager\' office on your left and see the truth for yourself
-    3) You could turn and walk away. This bank is filled with lunatic shitheads and you\'re too much of a boss (a poor boss, but a boss still) to take this bull.
+    3) You could turn and walk away. This bank is filled with lunatic shitheads and you\'re too much of a boss (a poor boss, but a boss still to take this bull.
 
     ''')
 
@@ -96,16 +96,63 @@ def complaint_to_man():
                 ''')
         else: #q2 Second option
             print('''
-            
+            "Sooo, here's the thing," you begin, slyly, "I actually don't give two shits about your lame ass, good for nothing bank jobs. How about instead of following you to my death, you just give me my own personal teller who wil do what I say and need and will give me thier undivided attention as soon as I walk in the bank."
+            The manager looks at you. They are impressed, no one has ever persuaded them to do two unncessarily wild things in a few minutes. 
+            "You know you have quite the persuasive skills. Maybe you should be a politician. I'm sure you could win all of your races. Anyway, as long as you don't make a mess of any of this, and you don't say shit about you giving me this position, and I'll see what I can do for you."
+            You smile. 
+            You might just be the next President of the United States. And maybe the next monarch of England...you're sure the Queen wouldn't mind ruinging centries worth of lineage and power for a sweet, simpleton, American...despite the history between the US and UK. While you're at it, go ahead and run for Prime Minister of Canada.
 
             ''')
+            q3 = input('''
+            You have two options:
+            1) Push it further. Just take the job as CEO of B.O.M.B. You can make millions from this.
+            2) Take the personal teller, find some fancy attire and go run for President of the United States. Donald Trump is doing a terrible job anyway, and you're confident you can do better. 
+            ''')
+            if q3 == '1':
+                print('''
+                "How about I do you one better?" You smirk at the manager and they immediately look as if they had just finished watching the Slience of the Lambs.
+                "Uh....what do you mean?"
+                "Well, I gave YOU the position of manager...so I'm going to give myself the position of CEO."
+                The manager's face relaxes. They actually look as though it is plausible for you to become the new CEO of B.O.M.B.
+                "...Ummm, sure. We can do that."
+                Damn. I can't believe that actually happened...and I'm the freakin narrator. Anyway, you look shocked, but you also aren't completely surprised. You lowkey have a superpower...use it wisely young grasshopper. 
+                The manager motions for you to follow them into a room where they immediately call the corporate branch and inform them of the new CEO replacement. B.O.M.B needed one anyway, and you surely are better than the current one. 
+                After a few minutes on the phone, the manager looks back at you and informs you that you will be flown up to New York in three months and that you have that amount of time to get packed and ready to move. They also inform you that you will have an apartment provided to you with your own driver.
+                You're fucking elated. From being a broke ass motherfucker to CEO of one of the most sucessful (although unorganized as fuck) banks in American history. Pat yourself on the back, bud. You're gonna do big things.
+
+                You leave prouder and richer than ever before. You get into your car excited by the fact that you plan on buying that Tesla you've always wanted.
+
+                ''')
+            else:
+                print('''
+                You smile and shake the manager's hand. 
+                "I'll take the personal teller, and I promise to endorse this bank when I become a Government official."
+                The manager is pleased with themselves for persuading you to do something rather than the other way around.
+                "Well then, pleasure doing business with you.
+
+                You leave the building and immediately go to sign up to run for the upcomming election. You pull random people off of the streets to come help you run your campaign. They agree without a second thought.
+                
+                ''')
 
     elif q1 == '2':
         print('''
+        You are tired of the bullshit B.O.M.B has given you. You eye the 'Manager' office and the teller looks worried of what you might do. 
+        Without a second thought you run towards the office and break down the door.
+        The lights in the room are bright as all hell, and once your eyes adjust, you're confused as fuck and can't quite understand what you're looking at.
+        The room is large. Larger than it should be given the distance between the back wall of the teller's area and the size of the actual building. You look around at about a million squirells running around in lab coats in goggles. They work on various machinery that doesn't look man-made. It's definitely more advance than anything you've ever seen and it all seems to work so effortlessly you wonder why the squirrels are event there.
 
         ''')
 
-    else: #q1 third option
+    else:
         print('''
+        NO. Just NO. 
+        You're done. I'm done. Let's just leave. This bullshit isn't worth it anymore.
+        Get in the Car. We're leaving
+        -Yours Truly,
+        The Narrator
 
         ''')
+    
+    print('''
+    ------FIN------
+    ''')
