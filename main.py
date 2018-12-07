@@ -31,6 +31,8 @@ while bank_open:
     #Opens account
     if have_acct in 'nN':
         ident = input('Would you like to open an account with us today? (y/n) ')
+        while ident not in 'NnYy':
+            ident = input('Not to be pushy, but I really need an answer. (y/n)')
         if ident in 'Yy':
             #Asks for and verifies age
             year = int(input('What year were you born in? '))
@@ -39,8 +41,12 @@ while bank_open:
             else:
                 basic_fun.open_acc()
                 new_trans = input('Would you like to complete more transactions (y/n) ')
+                while new_trans not in 'YyNn':
+                    new_trans = input('Not to be pushy, but I really need an answer. (y/n)')
                 if new_trans in 'Yy':
                     acc_num = input('For security purposes, please give me the account number for the account you just created. ')
+                    while not validators.is_account(acc_num):
+                        acc_num = input('That is not an account number we have with us, please try again.')
                     basic_fun.transactions_occur(acc_num)
                 else:
                     print('''
@@ -66,6 +72,8 @@ while bank_open:
         #Enters account based on account number
         if ident == 'account number':
             acc_num = input('What is the account number? ')
+            while not validators.is_account(acc_num):
+                acc_num = input('That is not an account we have with us. Please try again.')
             pin = input('What is the PIN number for this account? ')
             name = input('What is your name? ')
 
@@ -75,7 +83,7 @@ while bank_open:
                 This is not the correct PIN for this account. Please try again
                 ''')
             elif name not in accounts[acc_num]['Holder']:
-                print('You are not an account holder for this account.')
+                print('You are not an account holder for this account. If you do not leave, you will be reported for fraud.')
             
             #Transactions occur until the user is done
             else:
@@ -87,27 +95,30 @@ while bank_open:
             name = input('What is your name? ')
 
             aliases = helpers.get_aliases(name)
-            print(aliases)
-            alias = input('''
-            These are the bank accounts we have for you. Which would you like to enter?
-            Please give me the full alias (capitalization matters).
-            ''')
-            while alias not in aliases:
-                alias = input('''
-                That was not a suggested alias. Please give me a valid alias.
-                ''' )
-
-            #Gets account number and PIN
-            acc_num = helpers.find_account(alias, name)
-            pin = input('What is the PIN for this account? ')
-
-            #Decides whether this is the correct PIN for the account
-            if pin != accounts[acc_num]['PIN']:
-                print('This is not the correct PIN for this account.')
-
-            #Transactions occur
+            if len(aliases) == 0:
+                print('You do not have any accounts here.')
             else:
-                basic_fun.transactions_occur(acc_num)
+                print(aliases)
+                alias = input('''
+                These are the bank accounts we have for you. Which would you like to enter?
+                Please give me the full alias (capitalization matters).
+                ''')
+                while alias not in aliases:
+                    alias = input('''
+                    That was not a suggested alias. Please give me a valid alias.
+                    ''' )
+
+                #Gets account number and PIN
+                acc_num = helpers.find_account(alias, name)
+                pin = input('What is the PIN for this account? ')
+
+                #Decides whether this is the correct PIN for the account
+                if pin != accounts[acc_num]['PIN']:
+                    print('This is not the correct PIN for this account.')
+
+                #Transactions occur
+                else:
+                    basic_fun.transactions_occur(acc_num)
 
 
     #Hiring BYOA

@@ -98,7 +98,14 @@ def hiring_story():
         3) Tell her your name with attitude. You are pretty desperate for the job, but you have a hard time managing your anger.
         4) Politely tell her your name. Who are you kidding? You need this job pretty darn badly.
         ''')
-
+        while q1 not in '1234':
+            q1 = input('''
+            That was not an option for your adventure. Try again:
+            1) Walk away without letting her speak. After all, you need a job, but not badly enough to deal with that disrespect.
+            2) Tell her that she should have looked at the application. Why should you have spent all that time without her using it?
+            3) Tell her your name with attitude. You are pretty desperate for the job, but you have a hard time managing your anger.
+            4) Politely tell her your name. Who are you kidding? You need this job pretty darn badly.
+            ''')
         if q1 == '1':
             print('You angrily walk out of the bank. You even make sure the door slams shut for emphasis. It\'s time to look for a job elsewhere.')
 
@@ -114,6 +121,12 @@ def hiring_story():
             1) Walk away. Do you really want to work with these crazy people? You're honestly surprised the bank even has members.
             2) Wait for the hiring manager. You kind of want to hear what they have to say and you also know this is an opportunity to tell them how crappy this teller is.
             ''')
+            while q2 not in '12':
+                q2 = input('''
+                That was not a valid option for your adventure. Try again: 
+                1) Walk away. Do you really want to work with these crazy people? You're honestly surprised the bank even has members.
+                2) Wait for the hiring manager. You kind of want to hear what they have to say and you also know this is an opportunity to tell them how crappy this teller is.
+                ''')
 
             if q2 == '1':
                 print('''
@@ -132,7 +145,13 @@ def hiring_story():
                 2) Play on the fact that they need you more than you need the job. They don't have to know how much you are struggling...you might even manage to negotiate higher wages.
                 3) Lay all your chips on the table...notably the fact that you can't even afford a single chip to eat.
                 ''')
-
+                while q3 not in '123':
+                    q3 = input('''
+                    That was not a valid path for your adventure. Try again:
+                    1) Play the "Can I speak to your manager card?" and complain about the teller's attitude.
+                    2) Play on the fact that they need you more than you need the job. They don't have to know how much you are struggling...you might even manage to negotiate higher wages.
+                    3) Lay all your chips on the table...notably the fact that you can't even afford a single chip to eat.
+                    ''')
                 if q3 == '1':
                     print('''
                     "Well, of course you need new tellers! The ones you have now are absolute trash! I came here looking for a job and I will leave after by closing my account! So much attitude, so much disrespect! I hope this bank is closed by Christmas!" you scream, gathering your things and storming out of the door.
@@ -149,6 +168,12 @@ def hiring_story():
                     1) Lie about your qualification so that they want you even more.
                     2) Go directly into negotiating for a higher wage.
                     ''')
+                    while q4 not in '12':
+                        q4 = input('''
+                        That was not a valid choice for your adventure. Please try again:
+                        1) Lie about your qualification so that they want you even more.
+                        2) Go directly into negotiating for a higher wage.
+                        ''')
 
                     if q4 == '1':
                         print('''
@@ -173,6 +198,12 @@ def hiring_story():
                     1) Accept the job as a janitor
                     2) Accept the job as a teller
                     ''')
+                    while q4 not in '12':
+                        q4 = input('''
+                        That was not a valid path for your adventure. Try again:
+                        1) Accept the job as a janitor
+                        2) Accept the job as a teller
+                        ''')
 
                     if q4 == '1':
                         print('''
@@ -195,6 +226,12 @@ def hiring_story():
             1) You can leave angrily. You might not be qualified for a lot but you sure do know more than what's required for a janitor.
             2) You can accept the job as the janitor. It's not what you came here for but you need a job pretty badly.
             ''')
+            while q2 not in '12':
+                q2 = input('''
+                That was not a valid path for your adventure. Try again:
+                1) You can leave angrily. You might not be qualified for a lot but you sure do know more than what's required for a janitor.
+                2) You can accept the job as the janitor. It's not what you came here for but you need a job pretty badly.
+                ''')
 
             if q2 == '1':
                 print('''
@@ -217,6 +254,12 @@ def hiring_story():
             1) Yes
             2) No
             ''')
+            while q2 not in '12':
+                q2 = input('''
+                That was not a valid path for your adventure. Try again:
+                1) Yes
+                2) No
+                ''')
 
             if q2 == '1':
                 print('''
@@ -238,6 +281,13 @@ def hiring_story():
                 3) You can simply decline the job offer. Do you really want to work with these weirdos?
                 ''')
 
+                while q3 not in '123':
+                    q3 = input('''
+                    That was not a valid path for your adventure. Try again:
+                    1) Accept the job as the manager. You're not for sure that you will be able to perhire adequately but the pay will be bomb.
+                    2) You can push for the teller job. You know you'll be able to handle that one even if the pay isn't as great.
+                    3) You can simply decline the job offer. Do you really want to work with these weirdos?
+                    ''')
                 if q3 == '1':
                     print('''
                     You accept the job as the manager and get paid a whopping $20 an hour. You work 35 hours a week and couldn't be happier.

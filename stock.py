@@ -132,14 +132,30 @@ def trader():
                 Do you need to search for an equity code?
                 (Y/N)
                 ''')
-                if search in 'yY':
+                while search not in 'YyNn':
+                    search = input('''
+                    Please give me a valid answer.
+                    (Y/N)
+                    ''')
+                while search in 'yY':
                     keyword = input('''
                     What keyword or phrase would you like to search for?
                     Please, no special characters.
                     ''')
                     results = search_eq(keyword)
-
+                    print('Here are your results:')
                     print(results)
+                    search = input('''
+                    Do you need another search?
+                    (y/n)
+                    ''')
+
+                    while search not in 'YyNn':
+                        search = input('''
+                        Please give me a valid answer.
+                        (Y/N)
+                        ''')
+
 
                 equity = input('''
                 Please enter the equity code you would like to request information about.
@@ -153,6 +169,11 @@ def trader():
                 Do you need to search for the currency code?
                 (Y/N)
                 ''')
+                while search not in 'YyNn':
+                    search = input('''
+                    Please give me a valid answer.
+                    (Y/N)
+                    ''')
                 while search in 'yY':
                     currencies = currency_dict()
                     name = input('''
@@ -164,6 +185,11 @@ def trader():
                     Do you need another code?
                     (Y/N)
                     ''')
+                    while search not in 'YyNn':
+                        search = input('''
+                        Please give me a valid answer.
+                        (Y/N)
+                        ''')
                 origin = input('''
                 What currency would you like to start with?
                 Please give me the currency code.
@@ -193,6 +219,22 @@ def trader():
                 Energy
                 Financials
                 ''')
+                while s not in ['All', 'Communication Services', 'Real Estate', 'Consumer Discretionary', 'Information Technology', 'Consumer Staples', 'Utilities', 'Health Care', 'Industrials', 'Materials', 'Energy', 'Financials']:
+                    s = input('''
+                    That was not a valid sector. Your options are:
+                    All
+                    Communication Services
+                    Real Estate (note: no data available for 3 year, 5 year, or 10 year)
+                    Consumer Discretionary
+                    Information Technology
+                    Consumer Staples
+                    Utilities
+                    Health Care
+                    Industrials
+                    Materials
+                    Energy
+                    Financials
+                    ''')
 
                 period = input('''
                 What period would you like to get information about?
@@ -209,6 +251,21 @@ def trader():
                 5 Year
                 10 Year
                 ''')
+                while period not in ['All Periods', 'Current', '1 Day', '5 Day', '1 Month', '3 Month', 'Year-to-Date', '1 Year', '3 Year', '5 Year', '10 Year']:
+                    period = input('''
+                    That was not a valid period. Here are your options:
+                    All Periods
+                    Current
+                    1 Day
+                    5 Day
+                    1 Month
+                    3 Month
+                    Year-to-Date
+                    1 Year
+                    3 Year
+                    5 Year
+                    10 Year
+                    ''')
                 print('Here is the information you have requested:')
                 print(sector(s, period))
             
@@ -219,6 +276,11 @@ def trader():
             Do you have all of the information you need?
             Y/N
             ''')
+            while fin not in 'yYnN':
+                fin = input('''
+                Not to be pushy, but I need an answer.
+                Yes or no? (Y/N)
+                ''')
             if fin in 'Yy':
                 print('''
                 Thank you for speaking with me today!
@@ -238,6 +300,11 @@ def trader():
             I'm sorry; I couldn't hear you.
             Can you repeat yourself? (Y/N)
             ''')
+            while fin not in 'nNyY':
+                fin = input('''
+                I'm sorry; I couldn't hear you.
+                Can you repeat yourself? (Y/N)
+                ''')
             if fin in 'Nn':
                 print('''
                 I'm sorry for the miscommunication.

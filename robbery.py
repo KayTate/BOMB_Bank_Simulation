@@ -5,6 +5,12 @@ def robbery_story():
     1) Yes
     2) No
     ''')
+    while q1 not in '12':
+        q1 = input('''
+        This is not a valid path for your adventure. Please try again:
+        1) Yes
+        2) No
+        ''')
 
     if q1 == '1':
         q2 = input('''
@@ -12,7 +18,12 @@ def robbery_story():
         1) Armed
         2) Unarmed
         ''')
-
+        while q2 not in '12':
+            q2 = input('''
+            This is not a valid path for your adventure. Please try again:
+            1) Armed
+            2) Unarmed
+            ''')
         if q2 == '1':
             q3 = input('''
             You lean in towards the teller threateningly and she looks faintly frightened. Holding your bag open on the counter and your jacket pulled back, you begin to speak.
@@ -22,14 +33,25 @@ def robbery_story():
             1) Hold the teller at gunpoint until she gives you the money
             2) Threaten the teller verbally until she gives you the money
             ''')
-
+            while q3 not in '12':
+                q3 = input('''
+                This is not a valid path for your adventure. Please try again:
+                1) Hold the teller at gunpoint until she gives you the money
+                2) Threaten the teller verbally until she gives you the money
+                ''')
             if q3 == '1':
                 q4 = input('''
                 You slide over the counter and begin to hold the gun to her back. The other customers and tellers notice and begin to run out the door. She loads the money into your bag but as you are about to leave, you notice the police blockading the exits.
                 Will you hold hostages?
                 1) Yes
                 2) No
-                ''')
+                ''') 
+                while q4 not in '12':
+                    q4 = input('''
+                    This is not a valid path for your adventure. Please try again:
+                    1) Yes
+                    2) No
+                    ''')
 
                 if q4 == '1':
                     q5 = input('''
@@ -39,7 +61,12 @@ def robbery_story():
                     1) Try to make requests for a safe get away
                     2) Try to negotiate for a plea deal
                     ''')
-
+                    while q5 not in '12':
+                        q5 = input('''
+                        This is not a valid path for your adventure. Please try again:
+                        1) Try to make requests for a safe get away
+                        2) Try to negotiate for a plea deal
+                        ''')
                     if q5 == '1':
                         print('''
                         You begin to make your requests.
@@ -67,7 +94,12 @@ def robbery_story():
                 1) Yes
                 2) No
                 ''')
-
+                while q4 not in '12':
+                    q4 = input('''
+                    This is not a valid path for your adventure. Please try again:
+                    1) Yes
+                    2) No
+                    ''')
                 if q4 == '1':
                     print('''
                     You are able to run out before the police get there without the extra burden of your huge bag of money.

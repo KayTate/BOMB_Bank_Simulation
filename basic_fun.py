@@ -26,12 +26,18 @@ def open_acc():
 	accounts[acc_num] = {}
 	
 	#Defines account type
-	accounts[acc_num]['Account'] = input('What type of account would you like to open? (C for Checking, S for Saving, or B for Business) ')
-	
+	acc_type = input('What type of account would you like to open? (C for Checking, S for Saving, or B for Business) ')
+	acc_type.capitalize()
+	while acc_type not in 'CSB':
+		acc_type = input('Please tell me a valid account type: C for Checking, S for Saving, or B for Business')
+	accounts[acc_num]['Account'] = acc_type
+
 	#Defines account holders as a list mapped to the account key
 	holder = []
 	joint = input('Is this a joint account? (Y/N) ')
-	if joint == 'Y':
+	while joint not in 'YyNn':
+		joint = input('Please tell me if this is a joint account. Y for yes, N for no.')
+	if joint in 'Yy':
 		name = input('What is one name on the account? ')
 		holder = [name]
 		while name != 'n':
@@ -124,6 +130,8 @@ def close_acct():
 	Are you sure you would like to close your account?
 	Y for Yes, N for No
 	''')
+	while confirm not in 'YyNn':
+		confirm = input('Please tell me whether or not you would like to close your account...Y for yes, N for no. ')
 
 	if confirm in 'Nn':
 		print('Thank you for staying with us. Have a great day!')
@@ -159,27 +167,44 @@ def close_acct():
 def transactions_occur(acc_num):
 	customer = True
 	while customer:
-		function = input('What would you like to do to day? Check your balance, deposit, withdraw, or transfer money? (C, D, W, T) ')
+		function = input('What would you like to do today? Check your balance, deposit, withdraw, or transfer money? (C, D, W, T) ')
 		
-		if function == 'D':
+		while function not in 'CcDdWwTt':
+			function = input('Please tell me what you would like to do today. Check your balance, deposit, withdraw, or transfer money? (C, D, W, T) ')
+
+		if function in 'dD':
 			amount = input('How much would you like to deposit? ')
+			while not validators.is_dollar(amount):
+				amount = input('Please tell me a valid numeric value.')
 			print('You have $' + str(deposit(acc_num, amount)) + ' left in your account now.')
 			transaction = input('Would you like to make another transaction? (y/n) ')
-		elif function == 'W':
+		elif function in 'wW':
 			amount = input('How much would you like to withdraw? ')
+			while not validators.is_dollar(amount):
+				amount = input('Please tell me a valid numeric value.')
 			print('You have $' + str(withdrawl(acc_num, amount)) + ' left in your account now.')
 			transaction = input('Would you like to make another transaction? (y/n) ')
-		elif function == 'T':
+		elif function in 'tT':
 			destin = input('Where would you like to deposit money? Please tell me the account number. ')
+			while not validators.is_account(destin):
+				destin = input('Please enter a valid destination account number. The one you gave me does not belong to an account here.')
 			amount = input('How much money would you like to deposit? ')
+			while not validators.is_dollar(amount):
+				amount = input('Please tell me a valid numeric value.')
 			print('You have $' + str(transfer(acc_num, destin, amount)) + ' left in your account now.')
 			transaction = input('Would you like to make another transaction? (y/n) ')
-		elif function == 'C':
+		else:
 			print('You have $' + str(check_balance(acc_num)) + ' in your account.')
 			transaction = input('Would you like to make another transaction? (y/n) ')
 
 		#Decides whether or not another transaction is to be made
-		if transaction == 'y':
+		while transaction not in 'yYNn':
+			transaction = input('''
+			Can you repeat yourself? 
+			Would you like to make another transaction?
+			(Y/N)
+			''')
+		if transaction in 'Yy':
 			customer = True
 		else:
 			print('''

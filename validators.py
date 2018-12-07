@@ -1,4 +1,4 @@
-import datetime, helpers
+import datetime, helpers, basic_fun
 
 #Catches same-account transfers
 def is_same(origin, destin):
@@ -19,6 +19,11 @@ def is_phone(number):
 
 #Age Validator
 def is_adult(year):
+    #Makes sure its a number:
+    for char in str(year):
+        if char not in '1234567890':
+            return False
+    
     #Gets the current year
     now = datetime.datetime.now()
     cyear = now.year
@@ -26,5 +31,19 @@ def is_adult(year):
     #Checks age
     age = cyear-year
     if age < 18:
+        return False
+    return True
+
+#Valid dollar amount
+def is_dollar(amount):
+    for char in str(amount):
+        if char not in '1234567890':
+            return False
+    return True
+
+#Checks to see if account number is an account
+def is_account(number):
+    accounts = basic_fun.read()
+    if number not in accounts:
         return False
     return True

@@ -16,6 +16,13 @@ def complaint_to_man():
     3) You could turn and walk away. This bank is filled with lunatic shitheads and you\'re too much of a boss (a poor boss, but a boss still to take this bull.
 
     ''')
+    while q1 not in '123':
+        q1 = input('''
+        That was not an option for your adventure. Try again:
+        1) You could tell the teller that they are the new acting manager and flip them off confidently.
+        2) You could storm into the \'Manager\' office on your left and see the truth for yourself
+        3) You could turn and walk away. This bank is filled with lunatic shitheads and you\'re too much of a boss (a poor boss, but a boss still to take this bull.
+        ''')
 
     if q1 == '1':
         print('''
@@ -40,7 +47,12 @@ def complaint_to_man():
         2) Use your incredbily persuasive abilities to get a personal teller at B.O.M.B, this will definitely come in handy...personal transactions, no lines, just pure bliss and easy banking (something that will never exist in modern society).
         
         ''')
-
+        while q2 not in '12':
+            q2 = input('''
+            That was not an option for your adventure. Try again:
+            1) Follow the new manager and successfully enter your complaint. You made them so they will probably listen and take your concerns into consideration.
+            2) Use your incredbily persuasive abilities to get a personal teller at B.O.M.B, this will definitely come in handy...personal transactions, no lines, just pure bliss and easy banking (something that will never exist in modern society).
+            ''')
         if q2 == '1':
             print('''
             "I just have a couple of suggestions on how to fight instead of fleeing west," you state casually to the manager
@@ -63,7 +75,13 @@ def complaint_to_man():
             2) Ask about the goddamn heat. No human should work in these conditions and the manager cannot be working properly with such high temperatures. Quite frankly, you\'re concerned that they are\'t doing okay.
             3) Just get up and leave. You've had enough of B.O.M.B. From their poor services to inconsdiderate temperatures, you just cannot stand to be in such a hostile environment. You shall take your business elsewhere.
             ''')
-
+            while q3 not in '123':
+                q3 = input('''
+                That was not an option for your adventure. Try again:
+                1) Attempt to ignore how hot it is in the room. You are wearing your Fav sweater so it\'s probably just you and tell them about your complaints. 
+                2) Ask about the goddamn heat. No human should work in these conditions and the manager cannot be working properly with such high temperatures. Quite frankly, you\'re concerned that they are\'t doing okay.
+                3) Just get up and leave. You've had enough of B.O.M.B. From their poor services to inconsdiderate temperatures, you just cannot stand to be in such a hostile environment. You shall take your business elsewhere.
+                ''')
             if q3 == '1':
                 print('''
                 "Yeah, so, complaints." The manager takes out a notepad and a fancy ass pen. They look as though they genuinely care about what you have to say and want to actually change how the company is run.
@@ -118,7 +136,12 @@ def complaint_to_man():
             1) Push it further. Just take the job as CEO of B.O.M.B. You can make millions from this.
             2) Take the personal teller, find some fancy attire and go run for President of the United States. Donald Trump is doing a terrible job anyway, and you're confident you can do better. 
             ''')
-
+            while q3 not in '12':
+                q3 = input('''
+                That was not an option for your adventure. Try again:
+                1) Push it further. Just take the job as CEO of B.O.M.B. You can make millions from this.
+                2) Take the personal teller, find some fancy attire and go run for President of the United States. Donald Trump is doing a terrible job anyway, and you're confident you can do better. 
+                ''')
             if q3 == '1':
                 print('''
                 "How about I do you one better?" You smirk at the manager and they immediately look as if they had just finished watching the Slience of the Lambs.
@@ -175,6 +198,12 @@ def complaint_to_man():
         1) Engage the Squirrel. He is obviously too intelligent and too mysterious for you not to have a conversation with him. And plus, that voice.
         2) Leave. This is weird, and you should have noped out of this bank a long ass time ago
         ''')
+        while q2 not in '12':
+                q2 = input('''
+                That was not an option for your adventure. Try again:
+                1) Engage the Squirrel. He is obviously too intelligent and too mysterious for you not to have a conversation with him. And plus, that voice.
+                2) Leave. This is weird, and you should have noped out of this bank a long ass time ago
+                ''')
         if q2 == '1':
             print('''
             "Uh, I just wanted to speak to the manager," your voice waivers. You're intimidated as all hell, but you still want to hear him talk.
