@@ -58,14 +58,54 @@ def complaint_to_man():
             2) Ask about the goddamn heat. No human should work in these conditions and the manager cannot be working properly with such high temperatures. Quite frankly, you\'re concerned that they are\'t doing okay.
             3) Just get up and leave. You've had enough of B.O.M.B. From their poor services to inconsdiderate temperatures, you just cannot stand to be in such a hostile environment. You shall take your business elsewhere.
             ''')
-        else:
+            if q3 == '1':
+                print('''
+                "Yeah, so, complaints." The manager takes out a notepad and a fancy ass pen. They look as though they genuinely care about what you have to say and want to actually change how the company is run.
+                "My first complaint is how you all just threw out my fucking application. It does not make any sense to have one if you don\'t plan on using it in anyway." The manager scribbles down (hopefully) everything you just stated.
+                "My next one is about the staff....uhh well I had you as my teller, and I\'m sure you do fine work in most circumstances, but your attitude and dispostion is all over the place. You work at a bank for christ sake, you should just keep the same face and attitude for everything. I know it may be boring, but just chill out"
+                More scribbling
+                "And finally, uhh I shouldn\'t be able to walk up and make an random teller the new manager. Like don\'t you all have any regulations or some shit?"
+
+                The manager looks up at you after scribbling some final notes.
+                "Well, these are some pretty good suggestions. B.O.M.B will take these into consideration. We thank you for your time. Now, get out."
+
+                You stare back at the manager with confusion on your face and a distinct feeling of disrespect deep within your cheest. How dare they. But, honestly, you\'re over this, and decide to get up and leave.
+                As you\'re walking out, you turn back to the manager and say "Fuck you." Nice. Very Classsy of you...now you won't get any type of exclusive, private bank teller nice ass shit. Good going.
+
+                ''')
+            elif q3 =='2':
+                print('''
+                "Yo, what's up with the heat?"
+                The manager looks up at you, wide-eyed. They look terrified at one question...weird.
+                "Umm.... look just ignore the heat, it's a.....precautionary measure."
+                You stare at the manager. That made no sense, and as much as your curiosity neurons are firing, you decide not to push it. You've spent too much of your time here, and you need to get back to Russell, your 50 pound, 2-year old Bernese Mountain Dog. He's so fucking cute. You ponder pulling out your phone and showing pictures of Russell.
+                You squint at the manager, but decide to just tell them your complaints.
+                They scribble each down and look back up at you.
+                "Listen bud, next time you're in someone else's work space...just don't question thier envrionment. They surely know what they are doing."
+                That bullshit sounds suspicious....but you think back to Russell. He really needs to eat. 
+                You get up from your chair, continuing to think about that cuddly son of a bitch (literally), and just walk out of the building and to your car. This has been a roller coaster of emotion and you just want to cuddle Russell again. He loves you for who you are and he doesn't care how hot or cold it is. 
+
+                ''')
+            else:
+                print('''
+                You walk out of the builing, go to your car, and turn on the ignition. 
+                You realized that you just wasted at least six hours of your life, and those could have been spent playing on a swing set in your nearby park.
+                It's a nice ass park and those swings have leather cushioning. You have never felt so pretentious and royal sitting upon a swing set before.
+                After taking one last look at the builing before pulling out of the driveway, you remember your time here and decide that adulthood is not for you.  You'll spend the rest of your days living like the Queen of England, sitting upon your swingy throne. 
+
+                ''')
+        else: #q2 Second option
             print('''
+            
+
             ''')
 
     elif q1 == '2':
         print('''
+
         ''')
 
-    else:
+    else: #q1 third option
         print('''
+
         ''')
