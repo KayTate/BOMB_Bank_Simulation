@@ -1,5 +1,4 @@
-import json, requests, helpers
-
+import json, requests, csv, helpers
 
 #Returns most recent entry for the equity designated
 def quote(symbol):
@@ -22,8 +21,24 @@ def quote(symbol):
     return json.dumps(formatted, indent=1)
 
 
+#Generates the dictionary of currency codes and currency names from the .csv files
+def currency_dict():
+    currency = {}
+
+    with open('p_currency.csv', mode='r') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+        for row in csv_reader:
+            currency[row['currency name']] = row['currency code']
+
+    with open('d_currency.csv', mode='r') as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+        for row in csv_reader:
+            currency[row['currency name']] = row['currency code']
+
+    return currency
+
+
 #Gives the current exchange information from one currency to another
-#Looking to display a dictionary mapping the currency name to the code
 def exchange(origin, destin):
     #Gets the information from the API
     endpoint = 'function=CURRENCY_EXCHANGE_RATE&from_currency=' + origin + '&to_currency=' + destin + '&apikey=QFK2H96NRYJTAHC7'
@@ -134,10 +149,24 @@ def trader():
                 print(info)
 
             elif function == '2':
+                search = input('''
+                Do you need to search for the currency code?
+                (Y/N)
+                ''')
+                while search in 'yY':
+                    currencies = currency_dict()
+                    name = input('''
+                    What currency would you like to search for? 
+                    Please give me the name with proper capitalization.
+                    ''')
+                    print('The code you are looking for is', currencies[name], '.')
+                    search = input('''
+                    Do you need another code?
+                    (Y/N)
+                    ''')
                 origin = input('''
                 What currency would you like to start with?
-                For now, please give me the currency code.
-                In the future, we would like to be able to search the code for you based on the currency name
+                Please give me the currency code.
                 ''')
                 destination = input('''
                 What currency would you like to convert to?

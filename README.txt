@@ -34,6 +34,6 @@ Since we submitted our proposal, our team has come up with quite a few more ways
     * Randomly picking a teller and updating their hours after the bank closes
     * Plus additional information validators and helper functions
 
-We have even more to add, like additional input error catching and more functionality to our use of the API, but we are very proud of our progress thus far. We had an amazing time in your class this semester and we hope that you love our project and have an amazing time back home!
+We have even more to add, like additional input error catching, but we are very proud of our progress thus far. We had an amazing time in your class this semester and we hope that you love our project and have an amazing time back home!
 
     - Kaycee, Olivia, and Arianna
