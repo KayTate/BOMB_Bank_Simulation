@@ -69,3 +69,13 @@ def is_holder(holders):
                 aliases.append(alias)
 
     return aliases
+
+
+#Replaces spaces with underscores for keyword search
+def underscore(phrase):
+    new_phrase = ''
+    for char in phrase:
+        if char == ' ':
+            char = '_'
+        new_phrase += char
+    return new_phrase

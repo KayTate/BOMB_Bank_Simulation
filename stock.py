@@ -1,4 +1,4 @@
-import json, requests
+import json, requests, helpers
 
 
 #Returns most recent entry for the equity designated
@@ -44,35 +44,53 @@ def exchange(origin, destin):
 
 
 #Returns sector performances
-def sector(period):
+#Gets information for sector
+def sector_s(sector):
     #Gets the information from the API
     r = requests.get('https://www.alphavantage.co/query?function=SECTOR&apikey=QFK2H96NRYJTAHC7')
     result = r.json()
+    result.pop('Meta Data')
 
-    #Selects period
+    #Selects sector
+    if sector == 'All':
+        return result
+    else:
+        results = {}
+        for period in result:
+            if sector in result[period]:
+                results[period[8:]] = result[period][sector]
+        return results
+
+#Gets information for sector and period
+def sector(sector, period):
+    s_info = sector_s(sector)
+    
     if period == 'All Periods':
-        result.pop('Meta Data')
-        return json.dumps(result, indent=1)
+        return json.dumps(s_info, indent=1)
     elif period == 'Current':
-        return json.dumps(result['Rank A: Real-Time Performance'], indent=1)
-    elif period == '1 Day':
-        return json.dumps(result['Rank B: 1 Day Performance'], indent=1)
-    elif period == '5 Day':
-        return json.dumps(result['Rank C: 5 Day Performance'], indent=1)
-    elif period == '1 Month':
-        return json.dumps(result['Rank D: 1 Month Performance'], indent=1)
-    elif period == '3 Month':
-        return json.dumps(result['Rank E: 3 Month Performance'], indent=1)
-    elif period == 'Year-to-Date':
-        return json.dumps(result['Rank F: Year-to-Date (YTD) Performance'], indent=1)
-    elif period == '1 Year':
-        return json.dumps(result['Rank G: 1 Year Performance'], indent=1)
-    elif period == '3 Year':
-        return json.dumps(result['Rank H: 3 Year Performance'], indent=1)
-    elif period == '5 Year':
-        return json.dumps(result['Rank I: 5 Year Performance'], indent=1)
-    elif period == '10 Year':
-        return json.dumps(result['Rank J: 10 Year Performance'], indent=1)
+        if sector == 'All':
+            return json.dumps(s_info['Rank A: Real-Time Performance'], indent=1)
+        return s_info['Real-Time Performance']
+    else:
+        for p in s_info:
+            if period in p:
+                if sector == 'All':
+                    return json.dumps(s_info[p], indent=1)
+                return s_info[p]
+
+
+#Searches for an equity code given a keyword
+def search_eq(keyword):
+    keyword = helpers.underscore(keyword)
+    url = 'https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=' + keyword + '&apikey=QFK2H96NRYJTAHC7'
+    r = requests.get(url)
+    result = r.json()
+
+    results = {}
+    for dictionary in result['bestMatches']:
+        results[dictionary['2. name']] = dictionary['1. symbol']
+
+    return json.dumps(results, indent=1)
 
 
 #Compiles stock functions
@@ -95,9 +113,21 @@ def trader():
             ''')
 
             if function == '1':
+                search = input('''
+                Do you need to search for an equity code?
+                (Y/N)
+                ''')
+                if search in 'yY':
+                    keyword = input('''
+                    What keyword or phrase would you like to search for?
+                    Please, no special characters.
+                    ''')
+                    results = search_eq(keyword)
+
+                    print(results)
+
                 equity = input('''
-                For now, please enter the equity code you would like to request information about.
-                In the future, we hope to be able to provide you with the code based on the company name.
+                Please enter the equity code you would like to request information about.
                 ''')
                 info = quote(equity)
                 print('Here is the infomation you have requested about the entity related to the ' + equity + ' equity code.')
@@ -118,8 +148,25 @@ def trader():
                 print(info)
 
             elif function == '3':
+                s = input('''
+                What sector would you like to get information about?
+                Here are your options:
+                All
+                Communication Services
+                Real Estate (note: no data available for 3 year, 5 year, or 10 year)
+                Consumer Discretionary
+                Information Technology
+                Consumer Staples
+                Utilities
+                Health Care
+                Industrials
+                Materials
+                Energy
+                Financials
+                ''')
+
                 period = input('''
-                What period would you like to get information about? In the future, we would like to be able to allow you to pick both the sector and the period. 
+                What period would you like to get information about?
                 Here are your options:
                 All Periods
                 Current
@@ -134,7 +181,7 @@ def trader():
                 10 Year
                 ''')
                 print('Here is the information you have requested:')
-                print(sector(period))
+                print(sector(s, period))
             
             else:
                 print('I\'m sorry, but I cannot complete that search at this time.')
