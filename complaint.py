@@ -1,4 +1,5 @@
 def complaint_to_man():
+    
     print('''
     Finding the service at the Bank of Mashed Beats less than desireable, you decide to speak with the manager of B.O.M.B.
     You glare at the employee who has given you such rudimentary service and demand that you speak to the manager.
@@ -28,7 +29,9 @@ def complaint_to_man():
         I guess the manager is just special like that....
         They come back around to face you outside of the booth.
         "Alright," they begin, "let\'s get down to business."
-  ''')
+        
+        ''')
+
         q2 = input('''
         You look at the new manager. You are amazed that such a simpleton as yourself has so much power...maybe you should use this incredible ability to persuade elsewhere, maybe your crush will say yes to going out.
         But forget about that right now, you have business to take care of. 
@@ -37,6 +40,7 @@ def complaint_to_man():
         2) Use your incredbily persuasive abilities to get a personal teller at B.O.M.B, this will definitely come in handy...personal transactions, no lines, just pure bliss and easy banking (something that will never exist in modern society).
         
         ''')
+
         if q2 == '1':
             print('''
             "I just have a couple of suggestions on how to fight instead of fleeing west," you state casually to the manager
@@ -52,12 +56,14 @@ def complaint_to_man():
             "How can I help you this fine afternoon?" The manager smirks at you.
 
             ''')
+
             q3 = input('''
             You have three options:
             1) Attempt to ignore how hot it is in the room. You are wearing your Fav sweater so it\'s probably just you and tell them about your complaints. 
             2) Ask about the goddamn heat. No human should work in these conditions and the manager cannot be working properly with such high temperatures. Quite frankly, you\'re concerned that they are\'t doing okay.
             3) Just get up and leave. You've had enough of B.O.M.B. From their poor services to inconsdiderate temperatures, you just cannot stand to be in such a hostile environment. You shall take your business elsewhere.
             ''')
+
             if q3 == '1':
                 print('''
                 "Yeah, so, complaints." The manager takes out a notepad and a fancy ass pen. They look as though they genuinely care about what you have to say and want to actually change how the company is run.
@@ -73,6 +79,7 @@ def complaint_to_man():
                 As you\'re walking out, you turn back to the manager and say "Fuck you." Nice. Very Classsy of you...now you won't get any type of exclusive, private bank teller nice ass shit. Good going.
 
                 ''')
+
             elif q3 =='2':
                 print('''
                 "Yo, what's up with the heat?"
@@ -86,6 +93,7 @@ def complaint_to_man():
                 You get up from your chair, continuing to think about that cuddly son of a bitch (literally), and just walk out of the building and to your car. This has been a roller coaster of emotion and you just want to cuddle Russell again. He loves you for who you are and he doesn't care how hot or cold it is. 
 
                 ''')
+
             else:
                 print('''
                 You walk out of the builing, go to your car, and turn on the ignition. 
@@ -94,7 +102,8 @@ def complaint_to_man():
                 After taking one last look at the builing before pulling out of the driveway, you remember your time here and decide that adulthood is not for you.  You'll spend the rest of your days living like the Queen of England, sitting upon your swingy throne. 
 
                 ''')
-        else: #q2 Second option
+
+        else: 
             print('''
             "Sooo, here's the thing," you begin, slyly, "I actually don't give two shits about your lame ass, good for nothing bank jobs. How about instead of following you to my death, you just give me my own personal teller who wil do what I say and need and will give me thier undivided attention as soon as I walk in the bank."
             The manager looks at you. They are impressed, no one has ever persuaded them to do two unncessarily wild things in a few minutes. 
@@ -103,11 +112,13 @@ def complaint_to_man():
             You might just be the next President of the United States. And maybe the next monarch of England...you're sure the Queen wouldn't mind ruinging centries worth of lineage and power for a sweet, simpleton, American...despite the history between the US and UK. While you're at it, go ahead and run for Prime Minister of Canada.
 
             ''')
+
             q3 = input('''
             You have two options:
             1) Push it further. Just take the job as CEO of B.O.M.B. You can make millions from this.
             2) Take the personal teller, find some fancy attire and go run for President of the United States. Donald Trump is doing a terrible job anyway, and you're confident you can do better. 
             ''')
+
             if q3 == '1':
                 print('''
                 "How about I do you one better?" You smirk at the manager and they immediately look as if they had just finished watching the Slience of the Lambs.
@@ -123,6 +134,7 @@ def complaint_to_man():
                 You leave prouder and richer than ever before. You get into your car excited by the fact that you plan on buying that Tesla you've always wanted.
 
                 ''')
+
             else:
                 print('''
                 You smile and shake the manager's hand. 
@@ -140,14 +152,70 @@ def complaint_to_man():
         Without a second thought you run towards the office and break down the door.
         The lights in the room are bright as all hell, and once your eyes adjust, you're confused as fuck and can't quite understand what you're looking at.
         The room is large. Larger than it should be given the distance between the back wall of the teller's area and the size of the actual building. You look around at about a million squirells running around in lab coats in goggles. They work on various machinery that doesn't look man-made. It's definitely more advance than anything you've ever seen and it all seems to work so effortlessly you wonder why the squirrels are event there.
+        
+        "What the Fuck." You say. You should really watch your mouth... I don't think the squirrels like swearing.
+        The manager comes after you and attempts to take you out of the room. 
+        "Hey, listen," they grab at you, "Just ignore everything you see here. Don't as any questions and don't say shit. Or I will have to kill you."
+        
+        You are too mesmerized by the squirrels to pay attention to the teller behind you. You walk forward, deeper into the room. Your quarter-fancy shoes tap loudly against the pristine white tiled floors. Immediately all of the squirrels stop in place and swiftly and abruptly turn their heads to face you.
+        One of the squirrels emerges from the back. You aren't sure where, because the room is so frickin' massive. This squirrel is black and is wearing a small suit that its obviously much more expensive than anything you could ever own, and much less afford.
+        The Black Squirrel stares at you for a moment. You are intimidated. The squirrel then slowly turns his head and glares at the teller behind you. They screech and stumble quickly out the door, slamming it behind them.
+        The Black Squirrel turns back to you.
+
+        "In the short time we have been here," a deep, very masculine, soothing voice (one very similar to James Earl Jones's voice) emerges from the Squirrel, "I have never seen someone bold enough to actually speak to the manager. Banks are known for thier unrully managers."
+        He chuckles. A few other laughs come from some of the other squirrels.
+
+        "What brings you here, traveller?" 
+        His voice is so calming that you don't register that it's werid for a squirrel to speak English.
 
         ''')
+
+        q2 = input('''
+        You have two options:
+        1) Engage the Squirrel. He is obviously too intelligent and too mysterious for you not to have a conversation with him. And plus, that voice.
+        2) Leave. This is weird, and you should have noped out of this bank a long ass time ago
+        ''')
+        if q2 == '1':
+            print('''
+            "Uh, I just wanted to speak to the manager," your voice waivers. You're intimidated as all hell, but you still want to hear him talk.
+
+            "Ah, yes, well, as you can see here.... well, maybe not, but nonetheless, we are the ones who run B.O.M.B."
+            "How? none of this makes sense to me?"
+            "Well, we are quite technologically advanced. We are not from this planet, but rather are from one much better a few million light years away. But we came here because you humans have really fucked up the earth, and we're here to fix it, although its incredibly hard to do, due to the shit ton of damage you all have done. And what better way to do that than go through your money. We know how you all like to kill for it."
+            Damn....well now even I feel bad. He makes you feel shitty too, so at least I'm not alone.
+            "Now, I feel bad."
+            "Hahaha," he chuckles, "well, I am sorry, friend, I did not mean to do that. But listen, you are curious and resilient, and I think I want you to work for me."
+
+            Lmao, you just got a goddamn job offer from a squirrel...actually you should take it, like he's definitely the smartest thing you will ever meet.
+
+            "Uhh, sure? I am in need of a better job anyway."
+            "Great! You shall be paid well, more than ever in human history. You are now the richest human alive. Congratulations."
+            ...now I'm jealous
+            "Anyway, you can come in sometime next week and we'll get you trained to work with us. Try not to be too intimidated by us, we will lower our vocabulary and use english when we're around you."
+            "Thanks?"
+            "You're greatly welcomed, human."
+            
+            The squirrell smiles and returns to his duty. Another squirrel comes up to you and gives you instructions on how to proceed then sends you out the door.
+            As you walk out the building, you look back at the teller, who is drenched in sweat and looks increadibly shakey. You begin to worry about your new job offer.
+            Nonetheless, you continue to your car, grateful for the opportunity. And you're rich as fuck. So it's been a good day.
+
+            ''')
+
+        else:
+            print('''
+            You decide to attempt to leave the room, but to your detriment, the Squirrel is upset that you did not answer his question and find it highly unclassy.
+            He orders the other squirrels to sieze your body and use you for dinner.
+            He didn't want to do this, and doesn't condone eating other intelligent species, but that was rude as fuck, and honestly, I don't blame him.
+            
+            You are dead.
+
+            ''')
 
     else:
         print('''
         NO. Just NO. 
         You're done. I'm done. Let's just leave. This bullshit isn't worth it anymore.
-        Get in the Car. We're leaving
+        Get in the Car. We're leaving.
         -Yours Truly,
         The Narrator
 
