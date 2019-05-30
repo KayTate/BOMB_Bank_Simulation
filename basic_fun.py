@@ -62,7 +62,7 @@ def open_acc():
 			alias = input('You already have an account with that alias. Please give me a new one.')
 	accounts[acc_num]['Account Alias'] = alias
 	
-    #Creates PIN number
+    	#Creates PIN number
 	pin = str(random.randint(1000,10000))
 	accounts[acc_num]['PIN'] = pin
 	print('Your account number is ' + acc_num + ' and your Personalized Identification Number is ' + pin + '. You will need this information to access your account in the future.')
